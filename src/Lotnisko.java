@@ -3,7 +3,7 @@ public class Lotnisko {
     private double Y;
     private String miasto;
 
-    public Lotnisko(float x, float y, String miasto) {
+    public Lotnisko(double x, double y, String miasto) {
         X = x;
         Y = y;
         this.miasto = miasto;
