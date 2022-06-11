@@ -8,7 +8,7 @@ public class Data {
         this.czas = czas;
     }
 
-    public boolean czyDatajestwczesniejsza(Data data){
+    public boolean czyDatajestwczesniejsza(Data data){  //poprawic ify
         boolean wynik = false;
         if(data.rok<=rok){
             if(data.miesiac<=miesiac){
