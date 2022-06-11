@@ -1,10 +1,11 @@
 public class Bilet {
     String skad, dokad;
-    //data
+    Data data;
 
-    public Bilet(String skad, String dokad){ //i jeszcze data tu bedzie
+    public Bilet(String skad, String dokad, Data data){
         this.skad = skad;
         this.dokad = dokad;
+        this.data = data;
     }
 
     public String getDokad() {
@@ -15,4 +16,7 @@ public class Bilet {
         return skad;
     }
 
+    public Data getData() {
+        return data;
+    }
 }
