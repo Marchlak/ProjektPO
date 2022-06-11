@@ -11,6 +11,7 @@ public class Lot {
         this.koniec = koniec;
         this.liczbamiejsc = liczbamiejsc;
         this.trasa = trasa;
+        generujBilety();
     }
 
     public boolean czysawolnebilety(){
@@ -19,6 +20,12 @@ public class Lot {
             wynik = true;
         }
         return wynik;
+    }
+    private void generujBilety(){
+        for(int i=0;i<liczbamiejsc;i++){
+            Bilet b = new Bilet(trasa.getA().getMiasto(),trasa.getB().getMiasto(),poczatek);
+            wolnebilety.add(b);
+        }
     }
     public void zarezerwujBilet(Bilet bilet){ //dokonczyc
       wolnebilety.remove(bilet);
