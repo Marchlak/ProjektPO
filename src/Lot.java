@@ -11,6 +11,7 @@ public class Lot {
         this.koniec = koniec;
         this.liczbamiejsc = liczbamiejsc;
         this.trasa = trasa;
+        wolnebilety = new ArrayList<>();
         generujBilety();
     }
 
