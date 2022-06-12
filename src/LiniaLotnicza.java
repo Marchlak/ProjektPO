@@ -5,6 +5,7 @@ import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.Scanner;
+import java.time.LocalDateTime;
 
 public class LiniaLotnicza {
     private ArrayList<Lot> loty;
@@ -12,22 +13,20 @@ public class LiniaLotnicza {
     private ArrayList<Klient> klienci;
     private ArrayList<Trasa> trasy;
      ArrayList<Samolot> samoloty;
-    private Flota flota;
     public LiniaLotnicza(){
         loty = new ArrayList<>();
         lotniska = new ArrayList<>();
         klienci = new ArrayList<>();
         trasy = new ArrayList<>();
-        flota = new Flota();
         samoloty = new ArrayList<>();
     }
     public void dodajSamolot(Samolot samolot)
     {
-        flota.dodajSamolot(samolot);
+        samoloty.add(samolot);
     }
     public void usunSamolot(int indeks)
     {
-        flota.usunSamolot(indeks);
+        samoloty.remove(indeks);
     }
     public void dodajTrase(Trasa t)
     {
@@ -78,6 +77,14 @@ public class LiniaLotnicza {
 
         return lotniska.get(indeks);
     }
+    public Trasa getTrasa(int indeks)
+    {
+        return trasy.get(indeks);
+    }
+    public Samolot getSamolot(int indeks)
+    {
+        return samoloty.get(indeks);
+    }
 
     public ArrayList<Trasa> getTrasy()
     {
@@ -85,7 +92,7 @@ public class LiniaLotnicza {
     }
     public ArrayList<Samolot> getSamoloty()
     {
-        return flota.getSamoloty();
+        return samoloty;
     }
     public int ileLotnisk()
     {
@@ -93,7 +100,7 @@ public class LiniaLotnicza {
     }
     public int ileSamolotow()
     {
-        return flota.ileSamolotow();
+        return samoloty.size();
     }
     public int ileTras()
     {
@@ -175,10 +182,6 @@ public class LiniaLotnicza {
             samoloty.add(samolot);
         }
 
-
-
-
-
         return samoloty;
     }
     public ArrayList<Samolot> dodajLotyDoSamolotow(){
@@ -194,4 +197,19 @@ public class LiniaLotnicza {
         wczytajSamoloty();
         dodajLotyDoSamolotow();
     }
+    public ArrayList<Integer> GenerowanieLotow(int ilelotow, int coiledni, LocalDateTime poczatek, Trasa trasa, Samolot samolot)
+    {
+        ArrayList<int> Lista_lotow_ktore_mozna_utworzyc;
+        LocalDateTime koniec = poczatek.plusHours(6);
+       if(samolot.czyZasiegjestWystarczajcy(trasa))
+       {
+           for (int i = 0; i <ilelotow ; i++)
+           {
+               Lista_lotow_ktore_mozna_utworzyc.add(samolot.czySamolotmaczas(poczatek.plusDays(i*coiledni),koniec.plusDays(i*coiledni)));
+           }
+       }
+       return Lista_lotow_ktore_mozna_utworzyc;
+
+    }
+
 }

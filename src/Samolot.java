@@ -26,16 +26,23 @@ public class Samolot {
         return wynik;
     }
 
-    public boolean czySamolotmaczas(LocalDateTime pocz, LocalDateTime kon)
+    public int czySamolotmaczas(LocalDateTime pocz, LocalDateTime kon)
     {
+        int i=0;
         for (Lot l: Loty)
         {
+
             if(!pocz.isBefore(l.getKoniec()) && kon.isBefore(l.getPoczatek()))
             {
-                return true;
+                i=-1;
+                break;
+            }
+            else
+            {
+                i++
             }
         }
-        return false;
+        return i;
     }
     ///Dodaję indeks do metody żeby wiedzieć który z listy usunąć
     public void dodajLot(Lot lot,int indeks)

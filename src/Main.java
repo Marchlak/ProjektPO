@@ -1,8 +1,10 @@
+import java.io.FileNotFoundException;
+import java.time.LocalDateTime;
 import java.util.Scanner;
 import java.util.ArrayList;
 public class Main {
 
-    public static void main(String[] args)
+    public static void main(String[] args) throws FileNotFoundException
     {
         Scanner sc = new Scanner(System.in);
         Scanner sc2 = new Scanner(System.in);
@@ -61,6 +63,7 @@ public class Main {
                     System.out.println("10. Wypisz Samoloty");
                     System.out.println("11. Usun Samolot");
                     System.out.println("12.Generuj Loty dla Samolotu");
+                    System.out.println("13.Wypisz Loty Samolotu");
                     System.out.println("13.Usun Loty Samolotu");
                     System.out.println("0. Wyjdz do menu glownego");
 
@@ -69,7 +72,9 @@ public class Main {
 
                     switch(petla) {
                         case 1 -> {
-                            System.out.println("\n");
+                            System.out.println("Podaj nazwe pliku");
+                            String nazwaPliku;
+                            linia.wczytaj();
 
                         }
                         case 2 ->
@@ -84,8 +89,14 @@ public class Main {
                             System.out.println("Wpisz Koordynaty na ktorych znajduje sie lotnisko\n");
                             double x=sc.nextDouble();
                             double y=sc.nextDouble();
-                            Lotnisko lotnisko=new Lotnisko(x,y,nazwa);
-                            linia.dodajLotnisko(lotnisko);
+                            if(Math.abs(x)>180 || Math.abs(y)>90) {
+                             System.out.println("Zle koordynaty");
+                            }
+                            else
+                            {
+                                Lotnisko lotnisko = new Lotnisko(x, y, nazwa);
+                                linia.dodajLotnisko(lotnisko);
+                            }
                         }
                         case 4 ->
                         {
@@ -187,7 +198,31 @@ public class Main {
                         }
                         case 12 ->
                         {
-                            System.out.println("\n");
+                            System.out.println("Podaj indeks samolotu do ktorego chcesz wygenerowac lot");
+                            int isam= sc.nextInt();
+                            System.out.println("Podaj indeks trasy do ktorej ma zostac wygenerowany lot");
+                            int itras = sc.nextInt();
+                            System.out.println("Podaj czas w ktorym ma sie odbyc pierwszy lot");
+                            int rok = sc.nextInt();
+                            int mies = sc.nextInt();
+                            int dzien = sc.nextInt();
+                            int godzina = sc.nextInt();
+                            int minuta = sc.nextInt();
+                            LocalDateTime odlot= new LocalDateTime;
+                            odlot.plusYears(rok);
+                            odlot.plusMonths(mies);
+                            odlot.plusDays(dzien);
+                            odlot.plusHours(godzina);
+                            odlot.plusMinutes(minuta);
+                            System.out.println("Podaj co ile dni ma odbywac sie lot");
+                            int coiledni=sc.nextInt();
+                            System.out.println("Podaj ile razy chcesz powtórzyc lot");
+                            int ilerazypowtorzyc=sc.nextInt();
+                            ArrayList<int> kiedyloty = linia.GenerowanieLotow(coiledni,odlot,linia.getSamolot(isam),linia.getTrasa(itras));
+                            for (int i = 0; i <kiedyloty.size() ; i++)
+                            {
+                                System.out.println(kiedyloty.get(i + " "));
+                            }
 
                         }
                         case 13 ->
