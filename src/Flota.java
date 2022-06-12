@@ -3,6 +3,9 @@ import java.util.ArrayList;
 public class Flota {
     ArrayList <Samolot> samoloty;
 
+    public Flota(){
+        samoloty = new ArrayList<>();
+    }
     public ArrayList<Samolot> getSamoloty() {
         return samoloty;
     }
