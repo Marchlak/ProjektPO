@@ -38,5 +38,13 @@ public class LiniaLotnicza {
     {
         loty.remove(l);
     }
-
+    public void zarezerwujBilet(Lot lot, Klient klient){
+        if(lot.czysawolnebilety()){
+            klient.dodajBilet(lot.getWolnebilety().get(0));
+            lot.zarezerwujBilet(lot.getWolnebilety().get(0));
+        }
+        else{
+            System.out.println("Brak wolnych miejsc");
+        }
+    }
 }
