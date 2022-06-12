@@ -17,6 +17,28 @@ public class Main {
             petla = sc.nextInt();
             if (petla == 1)
             {
+                do {
+                    System.out.println("Witaj w panelu użytkownika");
+                    System.out.println("1. Rezerwacja biletu");
+                    System.out.println("2. Usuniecie rezerawcji");
+                    System.out.println("0. Powrot do menu glownego");
+                    switch(petla)
+                    {
+
+                        case 1 ->
+                                {
+                                    System.out.println("");
+                                }
+                        case 2 ->
+                                {
+                                    System.out.println("");
+
+
+
+                                }
+
+                    }
+                }while(petla!=0);
 
 
 
