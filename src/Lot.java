@@ -1,12 +1,16 @@
+import java.time.LocalDate;
 import java.util.ArrayList;
 
+
+
+
 public class Lot {
-    Data poczatek, koniec;
+    LocalDate poczatek, koniec;
     int liczbamiejsc;
     Trasa trasa;
-    ArrayList <Bilet> wolnebilety;
+    ArrayList<Bilet> wolnebilety;
 
-    public Lot(Data poczatek, Data koniec, Trasa trasa, int liczbamiejsc){
+    public Lot(LocalDate poczatek, LocalDate koniec, Trasa trasa, int liczbamiejsc){
         this.poczatek = poczatek;
         this.koniec = koniec;
         this.liczbamiejsc = liczbamiejsc;
@@ -29,14 +33,14 @@ public class Lot {
         }
     }
     public void zarezerwujBilet(Bilet bilet){ //dokonczyc
-      wolnebilety.remove(bilet);
+        wolnebilety.remove(bilet);
     }
 
-    public Data getPoczatek() {
+    public LocalDate getPoczatek() {
         return poczatek;
     }
 
-    public Data getKoniec() {
+    public LocalDate getKoniec() {
         return koniec;
     }
 
@@ -47,7 +51,6 @@ public class Lot {
     public Trasa getTrasa() {
         return trasa;
     }
-
     public ArrayList<Bilet> getWolnebilety() {
         return wolnebilety;
     }

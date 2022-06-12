@@ -1,4 +1,6 @@
+import java.time.LocalDate;
 import java.util.ArrayList;
+
 public class Samolot {
     private int liczbamiejsc;
     double zasieg;
@@ -17,20 +19,20 @@ public class Samolot {
         boolean wynik= false;
         double x;
         x=tr.getOdleglosc();
-         if(x<=zasieg)
-         {
-             wynik=true;
-         }
+        if(x<=zasieg)
+        {
+            wynik=true;
+        }
         return wynik;
     }
 
-    public boolean czySamolotmaczas(Data pocz, Data kon)
+    public boolean czySamolotmaczas(LocalDate pocz, LocalDate kon)
     {
         for (Lot l: Loty)
         {
-            if(!pocz.czyDatajestwczesniejsza(l.getKoniec()) && kon.czyDatajestwczesniejsza(l.getPoczatek()))
+            if(!pocz.isBefore(l.getKoniec()) && kon.isBefore(l.getPoczatek()))
             {
-              return true;
+                return true;
             }
         }
         return false;

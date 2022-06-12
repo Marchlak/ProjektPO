@@ -1,8 +1,10 @@
+import java.time.LocalDate;
+
 public class Bilet {
     String skad, dokad;
-    Data data;
+    LocalDate data;
 
-    public Bilet(String skad, String dokad, Data data){
+    public Bilet(String skad, String dokad, LocalDate data){
         this.skad = skad;
         this.dokad = dokad;
         this.data = data;
@@ -16,7 +18,7 @@ public class Bilet {
         return skad;
     }
 
-    public Data getData() {
+    public LocalDate getData() {
         return data;
     }
 }
