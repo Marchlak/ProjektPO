@@ -13,7 +13,11 @@ public class Flota {
     public void dodajSamolot(Samolot s){
         samoloty.add(s);
     }
-    public void usunSamolot(Samolot s){
-        samoloty.remove(s);
+    public void usunSamolot(int indeks){
+        samoloty.remove(indeks);
+    }
+    public int ileSamolotow()
+    {
+        return samoloty.size();
     }
 }

@@ -13,35 +13,43 @@ public class LiniaLotnicza {
         trasy = new ArrayList<>();
         flota = new Flota();
     }
-    void dodajTrase(Trasa t)
+    public void dodajSamolot(Samolot samolot)
+    {
+        flota.dodajSamolot(samolot);
+    }
+    public void usunSamolot(int indeks)
+    {
+        flota.usunSamolot(indeks);
+    }
+    public void dodajTrase(Trasa t)
     {
         trasy.add(t);
     }
-    void usunTrase(Trasa t)
+    public void usunTrase(int indeks)
     {
-        trasy.remove(t);
+        trasy.remove(indeks);
     }
-    void dodajLotnisko(Lotnisko l)
+    public void dodajLotnisko(Lotnisko l)
     {
       lotniska.add(l);
     }
-    void usunLotnisko(Lotnisko l)
+    public void usunLotnisko(int indeks)
     {
-        lotniska.remove(l);
+        lotniska.remove(indeks);
     }
-    void dodajKlienta(Klient k)
+    public void dodajKlienta(Klient k)
     {
       klienci.add(k);
     }
-    void usunKlienta(Klient k)
+   public void usunKlienta(Klient k)
     {
         klienci.remove(k);
     }
-    void dodajLot(Lot l)
+    public void dodajLot(Lot l)
     {
        loty.add(l);
     }
-    void usunLot(Lot l)
+    public void usunLot(Lot l)
     {
         loty.remove(l);
     }
@@ -53,5 +61,34 @@ public class LiniaLotnicza {
         else{
             System.out.println("Brak wolnych miejsc");
         }
+    }
+
+    public ArrayList<Lotnisko> getLotniska() {
+        return lotniska;
+    }
+    public Lotnisko getLotnisko(int indeks){
+
+        return lotniska.get(indeks);
+    }
+
+    public ArrayList<Trasa> getTrasy()
+    {
+        return trasy;
+    }
+    public ArrayList<Samolot> getSamoloty()
+    {
+        return flota.getSamoloty();
+    }
+    public int ileLotnisk()
+    {
+        return lotniska.size();
+    }
+    public int ileSamolotow()
+    {
+        return flota.ileSamolotow();
+    }
+    public int ileTras()
+    {
+        return trasy.size();
     }
 }

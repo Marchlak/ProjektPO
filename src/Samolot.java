@@ -62,4 +62,12 @@ public class Samolot {
     public ArrayList<Lot> getLoty() {
         return Loty;
     }
+
+
+    public String toStringSamolot() {
+        return "Samolot" +
+                "liczbamiejsc=" + liczbamiejsc +
+                ", zasieg=" + zasieg +
+                ", model='" + model + '\'';
+    }
 }
