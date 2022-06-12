@@ -13,35 +13,43 @@ public class LiniaLotnicza {
         trasy = new ArrayList<>();
         flota = new Flota();
     }
-    void dodajTrase(Trasa t)
+    public void dodajSamolot(Samolot samolot)
+    {
+        flota.dodajSamolot(samolot);
+    }
+    public void usunSamolot(int indeks)
+    {
+        flota.usunSamolot(indeks);
+    }
+    public void dodajTrase(Trasa t)
     {
         trasy.add(t);
     }
-    void usunTrase(int indeks)
+    public void usunTrase(int indeks)
     {
         trasy.remove(indeks);
     }
-    void dodajLotnisko(Lotnisko l)
+    public void dodajLotnisko(Lotnisko l)
     {
       lotniska.add(l);
     }
-    void usunLotnisko(int indeks)
+    public void usunLotnisko(int indeks)
     {
         lotniska.remove(indeks);
     }
-    void dodajKlienta(Klient k)
+    public void dodajKlienta(Klient k)
     {
       klienci.add(k);
     }
-    void usunKlienta(Klient k)
+   public void usunKlienta(Klient k)
     {
         klienci.remove(k);
     }
-    void dodajLot(Lot l)
+    public void dodajLot(Lot l)
     {
        loty.add(l);
     }
-    void usunLot(Lot l)
+    public void usunLot(Lot l)
     {
         loty.remove(l);
     }
@@ -59,11 +67,15 @@ public class LiniaLotnicza {
         return lotniska;
     }
     public Lotnisko getLotnisko(int indeks){
-        return lotniska.get(indeks)
+        return lotniska.get(indeks);
     }
 
     public ArrayList<Trasa> getTrasy()
     {
         return trasy;
+    }
+    public ArrayList<Samolot> getSamoloty()
+    {
+        return flota.getSamoloty();
     }
 }

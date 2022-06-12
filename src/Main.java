@@ -5,41 +5,46 @@ public class Main {
     public static void main(String[] args)
     {
         Scanner sc = new Scanner(System.in);
+        Scanner sc2 = new Scanner(System.in);
         LiniaLotnicza linia =new LiniaLotnicza();
         int petla;
         do {
-            System.out.println("Witaj w Systemie kontroli lotów\n");
-            System.out.println("1. Interefejs Uzytownika\n");
-            System.out.println("2. Interfejs Admina\n");
-            System.out.println("0. Wyjdz\n");
+            System.out.println("Witaj w Systemie kontroli lotów");
+            System.out.println("1. Interefejs Uzytownika");
+            System.out.println("2. Interfejs Admina");
+            System.out.println("0. Wyjdz");
+            System.out.println("");
             petla = sc.nextInt();
             if (petla == 1)
             {
 
 
+
             }
             else if(petla==2)
             {
-                System.out.println("Witaj w panelu admina\n");
-                System.out.println("1. Wcztaj z pliku\n");
-                System.out.println("2. Zapisz do pliku\n");
-                System.out.println("3. Dodaj Lotnisko\n");
-                System.out.println("4. Wypisz Lotniska\n");
-                System.out.println("5. Usun Lotnisko\n");
-                System.out.println("6. Dodaj Trase\n");
-                System.out.println("7. Wypisz Trasy\n");
-                System.out.println("8. Usun Trasy\n");
-                System.out.println("9. Dodaj Samolot\n");
-                System.out.println("10. Wypisz Samoloty\n");
-                System.out.println("11. Wypisz klientow\n");
-                System.out.println("12.Generuj Loty dla Samolotu\n");
-                System.out.println("13.Usun Loty Samolotu\n");
-                System.out.println("0. Wyjdz do menu glownego \n");
 
-                System.out.println("0. Wyjdz\n");
-                petla = sc.nextInt();
                 do
                 {
+                    System.out.println("Witaj w panelu admina");
+                    System.out.println("1. Wcztaj z pliku");
+                    System.out.println("2. Zapisz do pliku");
+                    System.out.println("3. Dodaj Lotnisko");
+                    System.out.println("4. Wypisz Lotniska");
+                    System.out.println("5. Usun Lotnisko");
+                    System.out.println("6. Dodaj Trase");
+                    System.out.println("7. Wypisz Trasy");
+                    System.out.println("8. Usun Trasy");
+                    System.out.println("9. Dodaj Samolot");
+                    System.out.println("10. Wypisz Samoloty");
+                    System.out.println("11. Wypisz klientow");
+                    System.out.println("12.Generuj Loty dla Samolotu");
+                    System.out.println("13.Usun Loty Samolotu");
+                    System.out.println("0. Wyjdz do menu glownego");
+
+
+                    petla = sc.nextInt();
+
                     switch(petla) {
                         case 1 -> {
                             System.out.println("\n");
@@ -53,7 +58,7 @@ public class Main {
                         case 3 ->
                         {
                             System.out.println("Wpisz miasto z w ktorym znajduje sie lotnisko\n");
-                            String nazwa=sc.nextLine();
+                            String nazwa=sc2.nextLine();
                             System.out.println("Wpisz Koordynaty na ktorych znajduje sie lotnisko\n");
                             int x=sc.nextInt();
                             int y=sc.nextInt();
@@ -66,7 +71,7 @@ public class Main {
                             ArrayList<Lotnisko> lotniska = linia.getLotniska();
                             for (Lotnisko L: lotniska)
                             {
-                                System.out.println(lotniska.toString());
+                                System.out.println(L.toString());
                             }
 
                         }
@@ -92,7 +97,7 @@ public class Main {
                             ArrayList<Trasa> trasy = linia.getTrasy();
                             for (Trasa T: trasy)
                             {
-                                System.out.println(trasy.toString());
+                                System.out.println(T.toString());
                             }
 
 
@@ -105,19 +110,29 @@ public class Main {
                         case 9 ->
                                 {
                             System.out.println("Podaj nazwe modelu Samolotu\n");
-                            String model=sc.nextLine();
-
-
+                            String model=sc2.nextLine();
+                            System.out.println("Podaj liczbe miejsc Samolotu\n");
+                            int miejsca=sc.nextInt();
+                            System.out.println("Podaj zasieg Samolotu\n");
+                            double zasieg=sc.nextDouble();
+                            Samolot samolot= new Samolot(zasieg,miejsca,model);
+                            linia.dodajSamolot(samolot);
                         }
                         case 10 ->
                         {
-                            System.out.println("\n");
+                            System.out.println("Dostepne Samoloty\n");
+                            ArrayList<Samolot> samoloty = linia.getSamoloty();
+                            for (Samolot S: samoloty)
+                            {
+                                System.out.println(S.toStringSamolot());
+                            }
+
 
                         }
                         case 11 ->
                         {
-                            System.out.println("\n");
-
+                            System.out.println("Podaj indeks samolotu ktory chcesz usunac\n");
+                            linia.usunSamolot(sc.nextInt()-1);
                         }
                         case 12 ->
                         {
@@ -127,7 +142,6 @@ public class Main {
                         case 13 ->
                         {
                             System.out.println("\n");
-
                         }
                     }
 
