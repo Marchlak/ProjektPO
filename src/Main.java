@@ -79,22 +79,34 @@ public class Main {
                         }
                         case 6 ->
                         {
-                            System.out.println("\n");
+                            System.out.println("Podaj indeksy lotnisk ktore z ktorych chcesz zrobic trase\n");
+                            int indeksA=sc.nextInt();
+                            int indeksB=sc.nextInt();
+                            Trasa trasa = new Trasa(linia.getLotnisko(indeksA),linia.getLotnisko(indeksB));
+                            linia.dodajTrase(trasa);
 
                         }
                         case 7 ->
                         {
-                            System.out.println("\n");
+                            System.out.println("Dostepne trasy\n");
+                            ArrayList<Trasa> trasy = linia.getTrasy();
+                            for (Trasa T: trasy)
+                            {
+                                System.out.println(trasy.toString());
+                            }
+
 
                         }
                         case 8 ->
                         {
-                            System.out.println("\n");
-
+                            System.out.println("Podaj indeks trasy ktora chcesz usunac\n");
+                            linia.usunTrase(sc.nextInt()-1);
                         }
                         case 9 ->
-                        {
-                            System.out.println("\n");
+                                {
+                            System.out.println("Podaj nazwe modelu Samolotu\n");
+                            String model=sc.nextLine();
+
 
                         }
                         case 10 ->

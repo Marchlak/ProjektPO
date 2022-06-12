@@ -17,9 +17,9 @@ public class LiniaLotnicza {
     {
         trasy.add(t);
     }
-    void usunTrase(Trasa t)
+    void usunTrase(int indeks)
     {
-        trasy.remove(t);
+        trasy.remove(indeks);
     }
     void dodajLotnisko(Lotnisko l)
     {
@@ -57,5 +57,13 @@ public class LiniaLotnicza {
 
     public ArrayList<Lotnisko> getLotniska() {
         return lotniska;
+    }
+    public Lotnisko getLotnisko(int indeks){
+        return lotniska.get(indeks)
+    }
+
+    public ArrayList<Trasa> getTrasy()
+    {
+        return trasy;
     }
 }

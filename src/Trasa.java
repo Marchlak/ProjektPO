@@ -19,4 +19,12 @@ private double odleglosc;
     public double getOdleglosc() {
         return odleglosc;
     }
+
+    public String toString() {
+        return "Trasa z"
+                 + A +
+                "do " + B +
+                " odleglosc =" + odleglosc +
+                "km\n ";
+    }
 }
