@@ -9,6 +9,7 @@ public class Lot {
     LocalDateTime poczatek, koniec;
     int liczbamiejsc;
     int nrsamolotu;
+    String id;
     Trasa trasa;
     ArrayList<Bilet> wolnebilety;
 
@@ -19,6 +20,7 @@ public class Lot {
         this.trasa = trasa;
         this.nrsamolotu = nrsamolotu;
         wolnebilety = new ArrayList<>();
+        id = generujid();
         generujBilety();
     }
 
@@ -31,12 +33,16 @@ public class Lot {
     }
     private void generujBilety(){
         for(int i=0;i<liczbamiejsc;i++){
-            Bilet b = new Bilet(trasa.getA().getMiasto(),trasa.getB().getMiasto(),poczatek);
+            Bilet b = new Bilet(trasa.getA().getMiasto(),trasa.getB().getMiasto(),poczatek,id);
             wolnebilety.add(b);
         }
     }
     public void zarezerwujBilet(Bilet bilet){ //dokonczyc
         wolnebilety.remove(bilet);
+    }
+    public String generujid(){
+      String s =nrsamolotu+poczatek.toString();
+      return s;
     }
 
     public LocalDateTime getPoczatek() {
