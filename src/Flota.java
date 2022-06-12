@@ -16,4 +16,8 @@ public class Flota {
     public void usunSamolot(int indeks){
         samoloty.remove(indeks);
     }
+    public int ileSamolotow()
+    {
+        return samoloty.size();
+    }
 }

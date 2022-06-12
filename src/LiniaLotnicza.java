@@ -67,6 +67,7 @@ public class LiniaLotnicza {
         return lotniska;
     }
     public Lotnisko getLotnisko(int indeks){
+
         return lotniska.get(indeks);
     }
 
@@ -77,5 +78,17 @@ public class LiniaLotnicza {
     public ArrayList<Samolot> getSamoloty()
     {
         return flota.getSamoloty();
+    }
+    public int ileLotnisk()
+    {
+        return lotniska.size();
+    }
+    public int ileSamolotow()
+    {
+        return flota.ileSamolotow();
+    }
+    public int ileTras()
+    {
+        return trasy.size();
     }
 }

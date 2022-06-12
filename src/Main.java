@@ -59,7 +59,7 @@ public class Main {
                     System.out.println("8. Usun Trasy");
                     System.out.println("9. Dodaj Samolot");
                     System.out.println("10. Wypisz Samoloty");
-                    System.out.println("11. Wypisz klientow");
+                    System.out.println("11. Usun Samolot");
                     System.out.println("12.Generuj Loty dla Samolotu");
                     System.out.println("13.Usun Loty Samolotu");
                     System.out.println("0. Wyjdz do menu glownego");
@@ -82,8 +82,8 @@ public class Main {
                             System.out.println("Wpisz miasto z w ktorym znajduje sie lotnisko\n");
                             String nazwa=sc2.nextLine();
                             System.out.println("Wpisz Koordynaty na ktorych znajduje sie lotnisko\n");
-                            int x=sc.nextInt();
-                            int y=sc.nextInt();
+                            double x=sc.nextDouble();
+                            double y=sc.nextDouble();
                             Lotnisko lotnisko=new Lotnisko(x,y,nazwa);
                             linia.dodajLotnisko(lotnisko);
                         }
@@ -101,16 +101,29 @@ public class Main {
                         {
                             System.out.println("Podaj indeks lotniska ktorego chcesz usunac\n");
                             int indeks=sc.nextInt()-1;
-                            linia.usunLotnisko(indeks);
+                            if(indeks<0 || indeks+1>linia.ileLotnisk())
+                            {
+                             System.out.println("Nie ma takiego lotniska");
+                            }
+                            else {
+                                linia.usunLotnisko(indeks);
+                            }
 
                         }
                         case 6 ->
                         {
                             System.out.println("Podaj indeksy lotnisk ktore z ktorych chcesz zrobic trase\n");
-                            int indeksA=sc.nextInt();
-                            int indeksB=sc.nextInt();
-                            Trasa trasa = new Trasa(linia.getLotnisko(indeksA),linia.getLotnisko(indeksB));
+                            int indeksA=sc.nextInt()-1;
+                            int indeksB=sc.nextInt()-1;
+                            if(indeksA<0 || indeksA+1>linia.ileTras() || indeksB<0 || indeksB+1>linia.ileTras())
+                            {
+                                System.out.println("Błędne indeksy");
+                            }
+                                else
+                                {
+                            Trasa trasa = new Trasa(linia.getLotnisko(indeksA), linia.getLotnisko(indeksB));
                             linia.dodajTrase(trasa);
+                                }
 
                         }
                         case 7 ->
@@ -127,7 +140,15 @@ public class Main {
                         case 8 ->
                         {
                             System.out.println("Podaj indeks trasy ktora chcesz usunac\n");
-                            linia.usunTrase(sc.nextInt()-1);
+                            int indeks=sc.nextInt()-1;
+                            if(indeks<0 || indeks+1>linia.ileTras())
+                            {
+                                System.out.println("Nie ma takiej trasy");
+                            }
+                            else
+                            {
+                                linia.usunTrase(indeks);
+                            }
                         }
                         case 9 ->
                                 {
@@ -154,7 +175,15 @@ public class Main {
                         case 11 ->
                         {
                             System.out.println("Podaj indeks samolotu ktory chcesz usunac\n");
-                            linia.usunSamolot(sc.nextInt()-1);
+                            int indeks=sc.nextInt()-1;
+                            if(indeks<0 || indeks+1>linia.ileSamolotow())
+                            {
+                                System.out.println("Nie ma takiego samolotu");
+                            }
+                            else
+                            {
+                                linia.usunSamolot(indeks);
+                            }
                         }
                         case 12 ->
                         {
