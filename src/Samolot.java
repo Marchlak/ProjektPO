@@ -1,4 +1,4 @@
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 
 public class Samolot {
@@ -26,7 +26,7 @@ public class Samolot {
         return wynik;
     }
 
-    public boolean czySamolotmaczas(LocalDate pocz, LocalDate kon)
+    public boolean czySamolotmaczas(LocalDateTime pocz, LocalDateTime kon)
     {
         for (Lot l: Loty)
         {
