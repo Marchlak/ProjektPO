@@ -8,14 +8,16 @@ import java.util.ArrayList;
 public class Lot {
     LocalDateTime poczatek, koniec;
     int liczbamiejsc;
+    private int nrsamolotu;
     Trasa trasa;
     ArrayList<Bilet> wolnebilety;
 
-    public Lot(LocalDateTime poczatek, Trasa trasa, int liczbamiejsc){
+    public Lot(LocalDateTime poczatek, Trasa trasa, int liczbamiejsc, int nrsamolotu){
         this.poczatek = poczatek;
         koniec = poczatek.plusHours(6);
         this.liczbamiejsc = liczbamiejsc;
         this.trasa = trasa;
+        this.nrsamolotu = nrsamolotu;
         wolnebilety = new ArrayList<>();
         generujBilety();
     }
