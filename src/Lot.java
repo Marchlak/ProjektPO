@@ -8,7 +8,7 @@ import java.util.ArrayList;
 public class Lot {
     LocalDateTime poczatek, koniec;
     int liczbamiejsc;
-    private int nrsamolotu;
+    int nrsamolotu;
     Trasa trasa;
     ArrayList<Bilet> wolnebilety;
 
