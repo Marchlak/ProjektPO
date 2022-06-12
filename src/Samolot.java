@@ -9,6 +9,7 @@ public class Samolot {
         this.zasieg = zasieg;
         this.liczbamiejsc = liczbamiejsc;
         this.model = model;
+        Loty = new ArrayList<>();
     }
 
     public boolean czyZasiegjestWystarczajcy(Trasa tr)
