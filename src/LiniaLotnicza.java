@@ -6,6 +6,13 @@ public class LiniaLotnicza {
     private ArrayList<Klient> klienci;
     private ArrayList<Trasa> trasy;
     private Flota flota;
+    public LiniaLotnicza(){
+        loty = new ArrayList<>();
+        lotniska = new ArrayList<>();
+        klienci = new ArrayList<>();
+        trasy = new ArrayList<>();
+        flota = new Flota();
+    }
     void dodajTrase(Trasa t)
     {
         trasy.add(t);
