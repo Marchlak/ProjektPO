@@ -25,9 +25,9 @@ public class LiniaLotnicza {
     {
       lotniska.add(l);
     }
-    void usunLotnisko(Lotnisko l)
+    void usunLotnisko(int indeks)
     {
-        lotniska.remove(l);
+        lotniska.remove(indeks);
     }
     void dodajKlienta(Klient k)
     {
@@ -53,5 +53,9 @@ public class LiniaLotnicza {
         else{
             System.out.println("Brak wolnych miejsc");
         }
+    }
+
+    public ArrayList<Lotnisko> getLotniska() {
+        return lotniska;
     }
 }

@@ -41,55 +41,80 @@ public class Main {
                 do
                 {
                     switch(petla) {
-                        case 1 ->  {
+                        case 1 -> {
+                            System.out.println("\n");
 
                         }
                         case 2 ->
                         {
+                            System.out.println("\n");
 
                         }
                         case 3 ->
                         {
-
+                            System.out.println("Wpisz miasto z w ktorym znajduje sie lotnisko\n");
+                            String nazwa=sc.nextLine();
+                            System.out.println("Wpisz Koordynaty na ktorych znajduje sie lotnisko\n");
+                            int x=sc.nextInt();
+                            int y=sc.nextInt();
+                            Lotnisko lotnisko=new Lotnisko(x,y,nazwa);
+                            linia.dodajLotnisko(lotnisko);
                         }
                         case 4 ->
                         {
+                            System.out.println("Dostępne lotniska \n");
+                            ArrayList<Lotnisko> lotniska = linia.getLotniska();
+                            for (Lotnisko L: lotniska)
+                            {
+                                System.out.println(lotniska.toString());
+                            }
 
                         }
                         case 5 ->
                         {
+                            System.out.println("Podaj indeks lotniska ktorego chcesz usunac\n");
+                            int indeks=sc.nextInt()-1;
+                            linia.usunLotnisko(indeks);
 
                         }
                         case 6 ->
                         {
+                            System.out.println("\n");
 
                         }
                         case 7 ->
                         {
+                            System.out.println("\n");
 
                         }
                         case 8 ->
                         {
+                            System.out.println("\n");
 
                         }
                         case 9 ->
                         {
+                            System.out.println("\n");
 
                         }
                         case 10 ->
                         {
+                            System.out.println("\n");
 
                         }
                         case 11 ->
                         {
+                            System.out.println("\n");
 
                         }
                         case 12 ->
                         {
+                            System.out.println("\n");
 
                         }
                         case 13 ->
                         {
+                            System.out.println("\n");
 
                         }
                     }
