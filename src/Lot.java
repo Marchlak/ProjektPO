@@ -11,9 +11,9 @@ public class Lot {
     Trasa trasa;
     ArrayList<Bilet> wolnebilety;
 
-    public Lot(LocalDateTime poczatek, LocalDateTime koniec, Trasa trasa, int liczbamiejsc){
+    public Lot(LocalDateTime poczatek, Trasa trasa, int liczbamiejsc){
         this.poczatek = poczatek;
-        this.koniec = koniec;
+        koniec = poczatek.plusHours(6);
         this.liczbamiejsc = liczbamiejsc;
         this.trasa = trasa;
         wolnebilety = new ArrayList<>();
