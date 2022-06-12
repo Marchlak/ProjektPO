@@ -47,4 +47,8 @@ public class Lot {
     public Trasa getTrasa() {
         return trasa;
     }
+
+    public ArrayList<Bilet> getWolnebilety() {
+        return wolnebilety;
+    }
 }
