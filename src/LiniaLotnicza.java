@@ -5,6 +5,7 @@ public class LiniaLotnicza {
     private ArrayList<Lotnisko> lotniska;
     private ArrayList<Klient> klienci;
     private ArrayList<Trasa> trasy;
+     ArrayList<Samolot> samoloty;
     private Flota flota;
     public LiniaLotnicza(){
         loty = new ArrayList<>();
@@ -12,6 +13,7 @@ public class LiniaLotnicza {
         klienci = new ArrayList<>();
         trasy = new ArrayList<>();
         flota = new Flota();
+        samoloty = new ArrayList<>();
     }
     public void dodajSamolot(Samolot samolot)
     {
