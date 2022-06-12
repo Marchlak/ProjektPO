@@ -42,6 +42,9 @@ public class Samolot {
     {
         Loty.add(indeks,lot);
     }
+    public void dodajLot2(Lot lot){
+        Loty.add(lot);
+    }
     public void usunLot(int indeks)
     {
         Loty.remove(indeks);
