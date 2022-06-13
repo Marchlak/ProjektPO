@@ -97,12 +97,13 @@ public class Samolot {
                dousuniecia.add(x);
            }
        }
-       System.out.println(dousuniecia.size());
+
        for(int i=0;i<dousuniecia.size();i++)
        {
-           System.out.println(dousuniecia.get(dousuniecia.size()-1-i) + "czemu tego nie usuwa");
-           Loty.remove(dousuniecia.get(dousuniecia.size()-1-i));
+           int zmienna=dousuniecia.get(dousuniecia.size()-1-i);
+           Loty.remove(zmienna);
        }
+
     }
 
     ///Dodaję indeks do metody żeby wiedzieć który z listy usunąć
@@ -141,4 +142,5 @@ public class Samolot {
                 " Zasieg= " + zasieg + "km" +
                 '\'';
     }
+
 }

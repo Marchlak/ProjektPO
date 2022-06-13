@@ -352,51 +352,12 @@ public class LiniaLotnicza {
                Lot lot = new Lot(poczatek.plusDays(i*coiledni),trasa,samoloty.get(indeksSamolotu).getLiczbamiejsc(),indeksSamolotu);
                listalotow.add(lot);
            }
+           loty.removeAll(samoloty.get(indeksSamolotu).getLoty());
            samoloty.get(indeksSamolotu).scalanie(listalotow);
-           /*
-       for(int k=0;k<loty.size();k++){
-           if(loty.get(k).nrsamolotu==indeksSamolotu){
-                loty.remove(loty.indexOf(loty.get(k)));
-           }
-         }
-         */
-          // scalanie2(samoloty.get(indeksSamolotu).getLoty());
+           loty.addAll(samoloty.get(indeksSamolotu).getLoty());
+    }
 
-    }
-    public void scalanie2(ArrayList<Lot> genlot)
-    {
-        ArrayList<Lot> pomoc = new ArrayList<Lot>();
-        for(int i=0;i<genlot.size()+loty.size();i++)
-        {
-            if(!genlot.isEmpty() && !loty.isEmpty())
-            {
-                if(genlot.get(0).getPoczatek().isBefore(loty.get(0).getPoczatek()))
-                {
-                    pomoc.add(genlot.get(0));
-                    genlot.remove(0);
-                }
-                else if(loty.get(0).getPoczatek().isBefore(genlot.get(0).getPoczatek()))
-                {
-                    pomoc.add(loty.get(0));
-                    loty.remove(0);
-                }
-            }
-            else if(genlot.isEmpty())
-            {
-                pomoc.addAll(loty);
-                loty.removeAll(loty);
-                break;
-            }
-            else if(loty.isEmpty())
-            {
-                pomoc.addAll(genlot);
-                genlot.removeAll(genlot);
-                break;
-            }
-        }
-        loty.addAll(pomoc);
-        pomoc.removeAll(pomoc);
-    }
+
     public ArrayList<Lot> getLoty() {
         return loty;
     }
