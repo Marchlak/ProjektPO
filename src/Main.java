@@ -37,7 +37,6 @@ public class Main {
                                 {
                                     System.out.println("Podaj KRS firmy");
                                     String KRS = sc2.nextLine();
-
                                 }
 
                     }
@@ -213,6 +212,11 @@ public class Main {
                                 System.out.println("Nie ma takiej trasy");
                                 break;
                             }
+                            if(!linia.getSamolot(isam).czyZasiegjestWystarczajcy(linia.getTrasa(itras)))
+                            {
+                                System.out.println("Zasieg jest niewystarczajcy" + linia.getTrasa(itras).getOdleglosc());
+                                break;
+                            }
                             System.out.println("Podaj czas w ktorym ma sie odbyc pierwszy lot");
                             int rok = sc.nextInt();
                             int mies = sc.nextInt();
@@ -233,7 +237,13 @@ public class Main {
                         case 13 ->
                         {
                             System.out.println("Podaj indeks którego samolotu chcesz wypisać loty");
+
                             int indeks = sc.nextInt()-1;
+                            if(indeks<0 || indeks+1>linia.ileSamolotow())
+                            {
+                                System.out.println("Nie ma takiego samolotu");
+                                break;
+                            }
                             ArrayList<Lot> loty = linia.getSamolot(indeks).getLoty();
                             for (Lot L: loty)
                             {

@@ -410,7 +410,7 @@ public class LiniaLotnicza {
         writer.close();
 
     }
-    public void GenerowanieLotow(int ilelotow, int coiledni, LocalDateTime poczatek, Trasa trasa, int indeksSamolotu)
+    public void GenerowanieLotow(int ilelotow, int coiledni, LocalDateTime poczatek, Trasa trasa, int indeksSamolotu)//funkcja generowania lotów
     {
         ArrayList<Lot> listalotow =new ArrayList<>();
 

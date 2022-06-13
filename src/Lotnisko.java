@@ -9,10 +9,9 @@ public class Lotnisko {
         this.miasto = miasto;
     }
 
-    public double obliczodleglosc(Lotnisko L)
+    public double obliczodleglosc(Lotnisko L) //metoda obliczająca odległość między lotniskami
     {
-      return Math.sqrt(Math.pow(X-L.X,2)+Math.pow(Y-L.Y,2));
-      // wzór do zmiany narazie taki podstawowy
+      return Math.sqrt(Math.pow(X-L.X,2)+Math.pow(Y-L.Y,2))*111.32;
     }
 
     public double getY() {
