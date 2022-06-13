@@ -63,4 +63,16 @@ public class Lot {
     public ArrayList<Bilet> getWolnebilety() {
         return wolnebilety;
     }
+
+    @Override
+    public String toString() {
+        return "Lot{" +
+                "poczatek=" + poczatek +
+                ", koniec=" + koniec +
+                ", liczbamiejsc=" + liczbamiejsc +
+                ", nrsamolotu=" + nrsamolotu +
+                ", id='" + id + '\'' +
+                ", trasa=" + trasa +
+                '}';
+    }
 }

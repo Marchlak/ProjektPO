@@ -7,6 +7,7 @@ import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.Scanner;
+import java.time.LocalDateTime;
 
 public class LiniaLotnicza {
     private ArrayList<Lot> loty;
@@ -14,22 +15,20 @@ public class LiniaLotnicza {
     private ArrayList<Klient> klienci;
     private ArrayList<Trasa> trasy;
      ArrayList<Samolot> samoloty;
-    private Flota flota;
     public LiniaLotnicza(){
         loty = new ArrayList<>();
         lotniska = new ArrayList<>();
         klienci = new ArrayList<>();
         trasy = new ArrayList<>();
-        flota = new Flota();
         samoloty = new ArrayList<>();
     }
     public void dodajSamolot(Samolot samolot)
     {
-        flota.dodajSamolot(samolot);
+        samoloty.add(samolot);
     }
     public void usunSamolot(int indeks)
     {
-        flota.usunSamolot(indeks);
+        samoloty.remove(indeks);
     }
     public void dodajTrase(Trasa t)
     {
@@ -80,6 +79,14 @@ public class LiniaLotnicza {
 
         return lotniska.get(indeks);
     }
+    public Trasa getTrasa(int indeks)
+    {
+        return trasy.get(indeks);
+    }
+    public Samolot getSamolot(int indeks)
+    {
+        return samoloty.get(indeks);
+    }
 
     public ArrayList<Trasa> getTrasy()
     {
@@ -87,7 +94,7 @@ public class LiniaLotnicza {
     }
     public ArrayList<Samolot> getSamoloty()
     {
-        return flota.getSamoloty();
+        return samoloty;
     }
     public int ileLotnisk()
     {
@@ -95,7 +102,7 @@ public class LiniaLotnicza {
     }
     public int ileSamolotow()
     {
-        return flota.ileSamolotow();
+        return samoloty.size();
     }
     public int ileTras()
     {
@@ -176,10 +183,6 @@ public class LiniaLotnicza {
             Samolot samolot = new Samolot(zasieg,liczbamiejsc,model);
             samoloty.add(samolot);
         }
-
-
-
-
 
         return samoloty;
     }
@@ -340,4 +343,17 @@ public class LiniaLotnicza {
         writer.close();
 
     }
+    public void GenerowanieLotow(int ilelotow, int coiledni, LocalDateTime poczatek, Trasa trasa, int indeksSamolotu)
+    {
+        ArrayList<Lot> listalotow =new ArrayList<>();
+
+           for (int i = 0; i <ilelotow ; i++)
+           {
+               Lot lot = new Lot(poczatek.plusDays(i*coiledni),trasa,samoloty.get(indeksSamolotu).getLiczbamiejsc(),1);
+               listalotow.add(lot);
+           }
+           samoloty.get(indeksSamolotu).scalanie(listalotow);
+
+    }
+
 }
