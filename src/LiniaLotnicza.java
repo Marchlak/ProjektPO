@@ -149,6 +149,11 @@ public class LiniaLotnicza {
     {
         return trasy.size();
     }
+
+    public ArrayList<Klient> getKlienci() {
+        return klienci;
+    }
+
     public ArrayList <Lotnisko>  wczytajLotniska() throws FileNotFoundException {
         Scanner scanner = new Scanner(new File(path));
 
