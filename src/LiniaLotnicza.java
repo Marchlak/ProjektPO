@@ -197,18 +197,16 @@ public class LiniaLotnicza {
         wczytajSamoloty();
         dodajLotyDoSamolotow();
     }
-    public ArrayList<Integer> GenerowanieLotow(int ilelotow, int coiledni, LocalDateTime poczatek, Trasa trasa, Samolot samolot)
+    public void GenerowanieLotow(int ilelotow, int coiledni, LocalDateTime poczatek, Trasa trasa, int indeksSamolotu)
     {
-        ArrayList<int> Lista_lotow_ktore_mozna_utworzyc;
-        LocalDateTime koniec = poczatek.plusHours(6);
-       if(samolot.czyZasiegjestWystarczajcy(trasa))
-       {
+        ArrayList<Lot> listalotow =new ArrayList<>();
+
            for (int i = 0; i <ilelotow ; i++)
            {
-               Lista_lotow_ktore_mozna_utworzyc.add(samolot.czySamolotmaczas(poczatek.plusDays(i*coiledni),koniec.plusDays(i*coiledni)));
+               Lot lot = new Lot(poczatek.plusDays(i*coiledni),trasa,samoloty.get(indeksSamolotu).getLiczbamiejsc(),1);
+               listalotow.add(lot);
            }
-       }
-       return Lista_lotow_ktore_mozna_utworzyc;
+           samoloty.get(indeksSamolotu).scalanie(listalotow);
 
     }
 

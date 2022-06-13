@@ -199,35 +199,36 @@ public class Main {
                         case 12 ->
                         {
                             System.out.println("Podaj indeks samolotu do ktorego chcesz wygenerowac lot");
-                            int isam= sc.nextInt();
+                            int isam= sc.nextInt()-1;
                             System.out.println("Podaj indeks trasy do ktorej ma zostac wygenerowany lot");
-                            int itras = sc.nextInt();
+                            int itras = sc.nextInt()-1;
                             System.out.println("Podaj czas w ktorym ma sie odbyc pierwszy lot");
                             int rok = sc.nextInt();
                             int mies = sc.nextInt();
                             int dzien = sc.nextInt();
                             int godzina = sc.nextInt();
                             int minuta = sc.nextInt();
-                            LocalDateTime odlot= new LocalDateTime;
-                            odlot.plusYears(rok);
-                            odlot.plusMonths(mies);
-                            odlot.plusDays(dzien);
-                            odlot.plusHours(godzina);
-                            odlot.plusMinutes(minuta);
+
+                            LocalDateTime odlot = LocalDateTime.of(rok,mies,dzien,godzina,minuta);
+
                             System.out.println("Podaj co ile dni ma odbywac sie lot");
                             int coiledni=sc.nextInt();
                             System.out.println("Podaj ile razy chcesz powtórzyc lot");
                             int ilerazypowtorzyc=sc.nextInt();
-                            ArrayList<int> kiedyloty = linia.GenerowanieLotow(coiledni,odlot,linia.getSamolot(isam),linia.getTrasa(itras));
-                            for (int i = 0; i <kiedyloty.size() ; i++)
-                            {
-                                System.out.println(kiedyloty.get(i + " "));
-                            }
+                            linia.GenerowanieLotow(ilerazypowtorzyc,coiledni,odlot,linia.getTrasa(itras),isam);
+
 
                         }
                         case 13 ->
                         {
-                            System.out.println("\n");
+                            System.out.println("Podaj indeks którego samolotu chcesz wypisać loty");
+                            int indeks = sc.nextInt()-1;
+                            ArrayList<Lot> loty = linia.getSamolot(indeks).getLoty();
+                            for (Lot L: loty)
+                            {
+                                System.out.println(L.toString());
+                            }
+
                         }
                     }
 

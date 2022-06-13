@@ -26,24 +26,76 @@ public class Samolot {
         return wynik;
     }
 
-    public int czySamolotmaczas(LocalDateTime pocz, LocalDateTime kon)
+    void scalanie(ArrayList<Lot> genlot)
     {
-        int i=0;
-        for (Lot l: Loty)
+        ArrayList<Integer> indeksy = new ArrayList<Integer>();
+        ArrayList<Lot> pomoc = new ArrayList<Lot>();
+       for(int i=0;i<genlot.size()+Loty.size();i++)
+       {
+        if(!genlot.isEmpty() && !Loty.isEmpty())
         {
-
-            if(!pocz.isBefore(l.getKoniec()) && kon.isBefore(l.getPoczatek()))
+            if(genlot.get(0).getPoczatek().isBefore(Loty.get(0).getPoczatek()))
             {
-                i=-1;
-                break;
+                pomoc.add(genlot.get(0));
+                indeksy.add(i);
+                genlot.remove(0);
             }
-            else
+            else if(Loty.get(0).getPoczatek().isBefore(genlot.get(0).getPoczatek()))
             {
-                i++
+                pomoc.add(Loty.get(0));
+                Loty.remove(0);
             }
         }
-        return i;
+        else if(genlot.isEmpty())
+        {
+            pomoc.addAll(Loty);
+            indeksy.add(i);
+            Loty.removeAll(Loty);
+            break;
+        }
+        else if(Loty.isEmpty())
+        {
+            pomoc.addAll(genlot);
+            genlot.removeAll(genlot);
+            break;
+        }
+       }
+       Loty.addAll(pomoc);
+       usuwanie(indeksy);
+       pomoc.removeAll(pomoc);
     }
+    private void usuwanie (ArrayList<Integer> nowowygenerowaneloty)
+    {
+        ArrayList<Integer> dousuniecia = new ArrayList<>();
+       for(int i=0;i<nowowygenerowaneloty.size();i++)
+       {
+           int x=nowowygenerowaneloty.get(0);
+           nowowygenerowaneloty.remove(0);
+           if(x==0)
+           {
+                if(Loty.get(x).getKoniec().plusHours(12).isAfter(Loty.get(x+1).getPoczatek()))
+                {
+                    dousuniecia.add(x);
+                }
+           }
+           else if(x==Loty.size()-1)
+           {
+               if(Loty.get(x).getPoczatek().minusHours(12).isBefore(Loty.get(x-1).getPoczatek()))
+               {
+                   dousuniecia.add(x);
+               }
+           }
+           else if (Loty.get(x).getKoniec().plusHours(12).isAfter(Loty.get(x+1).getPoczatek()) || Loty.get(x).getPoczatek().minusHours(12).isBefore(Loty.get(x-1).getPoczatek()) )
+           {
+               dousuniecia.add(x);
+           }
+       }
+       for(int i=0;i<dousuniecia.size();i++)
+       {
+           Loty.remove(dousuniecia.get(dousuniecia.size()-1-i));
+       }
+    }
+
     ///Dodaję indeks do metody żeby wiedzieć który z listy usunąć
     public void dodajLot(Lot lot,int indeks)
     {
