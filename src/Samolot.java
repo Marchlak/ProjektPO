@@ -30,10 +30,13 @@ public class Samolot {
     {
         ArrayList<Integer> indeksy = new ArrayList<Integer>();
         ArrayList<Lot> pomoc = new ArrayList<Lot>();
-       for(int i=0;i<genlot.size()+Loty.size();i++)
+        int n=genlot.size()+Loty.size();
+       for(int i=0;i<n;i++)
        {
+
         if(!genlot.isEmpty() && !Loty.isEmpty())
         {
+
             if(genlot.get(0).getPoczatek().isBefore(Loty.get(0).getPoczatek()))
             {
                 pomoc.add(genlot.get(0));
@@ -49,26 +52,30 @@ public class Samolot {
         else if(genlot.isEmpty())
         {
             pomoc.addAll(Loty);
-            indeksy.add(i);
+
             Loty.removeAll(Loty);
             break;
         }
         else if(Loty.isEmpty())
         {
             pomoc.addAll(genlot);
+            indeksy.add(i);
             genlot.removeAll(genlot);
             break;
         }
        }
        Loty.addAll(pomoc);
+        pomoc.removeAll(pomoc);
        usuwanie(indeksy);
-       pomoc.removeAll(pomoc);
+
     }
-    private void usuwanie (ArrayList<Integer> nowowygenerowaneloty)
+    public void usuwanie (ArrayList<Integer> nowowygenerowaneloty)
     {
         ArrayList<Integer> dousuniecia = new ArrayList<>();
-       for(int i=0;i<nowowygenerowaneloty.size();i++)
+        int n= nowowygenerowaneloty.size();
+       for(int i=0;i<n;i++)
        {
+           System.out.println(i);
            int x=nowowygenerowaneloty.get(0);
            nowowygenerowaneloty.remove(0);
            if(x==0)
@@ -80,20 +87,23 @@ public class Samolot {
            }
            else if(x==Loty.size()-1)
            {
-               if(Loty.get(x).getPoczatek().minusHours(12).isBefore(Loty.get(x-1).getPoczatek()))
+               if(Loty.get(x).getPoczatek().minusHours(12).isBefore(Loty.get(x-1).getKoniec()))
                {
                    dousuniecia.add(x);
                }
            }
-           else if (Loty.get(x).getKoniec().plusHours(12).isAfter(Loty.get(x+1).getPoczatek()) || Loty.get(x).getPoczatek().minusHours(12).isBefore(Loty.get(x-1).getPoczatek()) )
+           else if (Loty.get(x).getKoniec().plusHours(12).isAfter(Loty.get(x+1).getPoczatek()) || Loty.get(x).getPoczatek().minusHours(12).isBefore(Loty.get(x-1).getKoniec()) )
            {
                dousuniecia.add(x);
            }
        }
+
        for(int i=0;i<dousuniecia.size();i++)
        {
-           Loty.remove(dousuniecia.get(dousuniecia.size()-1-i));
+           int zmienna=dousuniecia.get(dousuniecia.size()-1-i);
+           Loty.remove(zmienna);
        }
+
     }
 
     ///Dodaję indeks do metody żeby wiedzieć który z listy usunąć
@@ -127,9 +137,10 @@ public class Samolot {
 
 
     public String toStringSamolot() {
-        return "Samolot" +
-                "liczbamiejsc=" + liczbamiejsc +
-                ", zasieg=" + zasieg +
-                ", model='" + model + '\'';
+        return  "Model= " + model +
+                " Liczbamiejsc= " + liczbamiejsc +
+                " Zasieg= " + zasieg + "km" +
+                '\'';
     }
+
 }

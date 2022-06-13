@@ -386,11 +386,16 @@ public class LiniaLotnicza {
 
            for (int i = 0; i <ilelotow ; i++)
            {
-               Lot lot = new Lot(poczatek.plusDays(i*coiledni),trasa,samoloty.get(indeksSamolotu).getLiczbamiejsc(),1);
+               Lot lot = new Lot(poczatek.plusDays(i*coiledni),trasa,samoloty.get(indeksSamolotu).getLiczbamiejsc(),indeksSamolotu);
                listalotow.add(lot);
            }
+           loty.removeAll(samoloty.get(indeksSamolotu).getLoty());
            samoloty.get(indeksSamolotu).scalanie(listalotow);
-
+           loty.addAll(samoloty.get(indeksSamolotu).getLoty());
     }
 
+
+    public ArrayList<Lot> getLoty() {
+        return loty;
+    }
 }
