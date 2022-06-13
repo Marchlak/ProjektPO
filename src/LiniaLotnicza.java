@@ -1,5 +1,7 @@
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
@@ -255,5 +257,87 @@ public class LiniaLotnicza {
         dodajLotyDoSamolotow();
         wczytajFirmy();
         wczytajIndywidualnych();
+    }
+    public void zapisz() throws IOException {
+        PrintWriter writer = new PrintWriter(new File("output.txt"));
+        String llotniska = "";
+        String ltrasy="";
+        String lloty="";
+        String lsamoloty="";
+        String lfirmy="";
+        String lindywidualny="";
+        for(int i=0;i<lotniska.size();i++){
+            llotniska = llotniska+lotniska.get(i).getX()+" "+lotniska.get(i).getY()+" "+lotniska.get(i).getMiasto()+";";
+        }
+        for(int i=0;i<trasy.size();i++){
+            for(int j=0;j<lotniska.size();j++){
+                if(trasy.get(i).getA().getMiasto().equals(lotniska.get(j).getMiasto())){
+                    ltrasy = ltrasy+j+" ";
+                    for(int k=0;k<lotniska.size();k++){
+                        if(trasy.get(i).getB().getMiasto().equals(lotniska.get(k).getMiasto())){
+                            ltrasy = ltrasy+k+";";
+                        }
+                    }
+                }
+
+            }
+        }
+        for(int i=0;i<loty.size();i++){
+            for(int j=0;j<trasy.size();j++){
+                if(loty.get(i).trasa.equals(trasy.get(j))){
+                    lloty=lloty+loty.get(i).poczatek.getYear()+" "+loty.get(i).poczatek.getMonthValue()+" "+
+                            loty.get(i).poczatek.getDayOfMonth()+" "+loty.get(i).poczatek.getHour()+" "+loty.get(i).poczatek.getMinute()+
+                            " "+j+" "+loty.get(i).wolnebilety.size()+" "+loty.get(i).nrsamolotu+";";
+                }
+            }
+
+
+        }
+        for(int i=0;i<samoloty.size();i++){
+            lsamoloty=lsamoloty+samoloty.get(i).zasieg+" "+samoloty.get(i).getLiczbamiejsc()+" "
+                    +samoloty.get(i).getModel()+";";
+        }
+        for(int i=0;i<klienci.size();i++){
+            if(klienci.get(i) instanceof Firma){
+
+                lfirmy=lfirmy+((Firma) klienci.get(i)).getNazwa()+" "+((Firma) klienci.get(i)).getNarodowosc()+
+                        " "+((Firma) klienci.get(i)).getKRS()+" ";
+                for(int j=0;j<klienci.get(i).getBilety().size();j++){
+                    lfirmy=lfirmy+klienci.get(i).getBilety().get(j).idLotu;
+                    if(j!=(klienci.get(i).getBilety().size()-1)){
+                        lfirmy=lfirmy+"/";
+                    }
+                }
+                lfirmy = lfirmy+";";
+            }
+
+        }
+        for(int i=0;i<klienci.size();i++){
+            if(klienci.get(i) instanceof Indywidualny){
+
+                lindywidualny=lindywidualny+((Indywidualny) klienci.get(i)).getImie()+" "+
+                        ((Indywidualny) klienci.get(i)).getNazwisko()+" "+((Indywidualny) klienci.get(i)).getNarodowosc()+" "+
+                        ((Indywidualny) klienci.get(i)).getWiek()+" ";
+                for(int j=0;j<klienci.get(i).getBilety().size();j++){
+                    lindywidualny=lindywidualny+klienci.get(i).getBilety().get(j).idLotu;
+                    if(j!=(klienci.get(i).getBilety().size()-1)){
+                        lindywidualny=lindywidualny+"/";
+                    }
+                }
+                lindywidualny = lindywidualny+";";
+            }
+
+        }
+
+
+
+        writer.println(llotniska);
+        writer.println(ltrasy);
+        writer.println(lloty);
+        writer.println(lsamoloty);
+        writer.println(lfirmy);
+        writer.println(lindywidualny);
+        writer.close();
+
     }
 }
