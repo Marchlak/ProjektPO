@@ -26,9 +26,25 @@ public class LiniaLotnicza {
     {
         samoloty.add(samolot);
     }
-    public void usunSamolot(int indeks)
-    {
-        samoloty.remove(indeks);
+    public void usunSamolot(int indeks) {
+        for(int k=0;k<loty.size();k++){
+            if(loty.get(k).nrsamolotu==indeks){
+                loty.remove(loty.get(k));
+            }
+        }
+        if(samoloty.size()>indeks+1){
+            for(int i=indeks+1;i<samoloty.size();i++){
+                for(int j=0;j<samoloty.get(i).getLoty().size();j++){
+                    samoloty.get(i).getLoty().get(j).nrsamolotu--;
+                }
+            }
+        }
+        if(samoloty.size()==0){
+            loty.clear();
+        }
+        if(samoloty.size()>0) {
+            samoloty.remove(samoloty.get(indeks));
+        }
     }
     public void dodajTrase(Trasa t)
     {
