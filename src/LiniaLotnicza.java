@@ -15,6 +15,7 @@ public class LiniaLotnicza {
     private ArrayList<Klient> klienci;
     private ArrayList<Trasa> trasy;
      ArrayList<Samolot> samoloty;
+     String path;
     public LiniaLotnicza(){
         loty = new ArrayList<>();
         lotniska = new ArrayList<>();
@@ -147,7 +148,7 @@ public class LiniaLotnicza {
         return trasy.size();
     }
     public ArrayList <Lotnisko>  wczytajLotniska() throws FileNotFoundException {
-        Scanner scanner = new Scanner(new File("input.txt"));
+        Scanner scanner = new Scanner(new File(path));
 
 
         String[] linia = scanner.nextLine().split(";");
@@ -166,7 +167,7 @@ public class LiniaLotnicza {
         return lotniska;
     }
     public ArrayList <Trasa> wczytajTrasy() throws FileNotFoundException {
-        Scanner scanner = new Scanner(new File("input.txt"));
+        Scanner scanner = new Scanner(new File(path));
 
         scanner.nextLine();
 
@@ -183,7 +184,7 @@ public class LiniaLotnicza {
         return trasy;
     }
     public ArrayList<Lot> wczytajLoty() throws FileNotFoundException {
-        Scanner scanner = new Scanner(new File("input.txt"));
+        Scanner scanner = new Scanner(new File(path));
 
 
         for(int i = 0;i<2;i++){
@@ -210,7 +211,7 @@ public class LiniaLotnicza {
         return loty;
     }
     public ArrayList <Samolot>  wczytajSamoloty() throws FileNotFoundException {
-        Scanner scanner = new Scanner(new File("input.txt"));
+        Scanner scanner = new Scanner(new File(path));
 
 
         for (int i = 0; i < 3; i++) {
@@ -240,7 +241,7 @@ public class LiniaLotnicza {
         return samoloty;
     }
     public ArrayList<Klient> wczytajFirmy() throws FileNotFoundException {
-        Scanner scanner = new Scanner(new File("input.txt"));
+        Scanner scanner = new Scanner(new File(path));
         for (int i = 0; i < 4; i++) {
             scanner.nextLine();
         }
@@ -276,7 +277,7 @@ public class LiniaLotnicza {
         return klienci;
     }
     public void wczytajIndywidualnych() throws FileNotFoundException {
-        Scanner scanner = new Scanner(new File("input.txt"));
+        Scanner scanner = new Scanner(new File(path));
         for (int i = 0; i < 5; i++) {
             scanner.nextLine();
         }
@@ -321,7 +322,7 @@ public class LiniaLotnicza {
         wczytajIndywidualnych();
     }
     public void zapisz() throws IOException {
-        PrintWriter writer = new PrintWriter(new File("input.txt"));
+        PrintWriter writer = new PrintWriter(new File(path));
         String llotniska = "";
         String ltrasy="";
         String lloty="";
