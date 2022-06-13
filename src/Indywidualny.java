@@ -21,4 +21,8 @@ public class Indywidualny extends Klient  {
     public int getWiek() {
         return wiek;
     }
+
+    public String getNarodowosc() {
+        return narodowosc;
+    }
 }

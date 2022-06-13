@@ -17,4 +17,8 @@ public class Firma extends Klient {
     public int getKRS() {
         return KRS;
     }
+
+    public String getNarodowosc() {
+        return narodowosc;
+    }
 }
