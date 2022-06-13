@@ -271,4 +271,34 @@ public class Main {
 
         }while(petla!=0);
     }
+    public static int czyjesttakiklient(LiniaLotnicza l,String nazwisko,String imie){
+        int numer =-1;
+        for(int i=0;i<l.getKlienci().size();i++){
+            if(l.getKlienci().get(i) instanceof Indywidualny) {
+                if(((Indywidualny) l.getKlienci().get(i)).getImie().equals(imie)){
+                    if(((Indywidualny) l.getKlienci().get(i)).getNazwisko().equals(nazwisko)){
+                        System.out.println("tak");
+                        numer=i;
+                        break;
+                    }
+                }
+            }
+        }
+
+        return numer;
+    }
+    public static int czyjesttakafirma(LiniaLotnicza l,int KRS){
+        int numer =-1;
+        for(int i=0;i<l.getKlienci().size();i++){
+            if(l.getKlienci().get(i) instanceof Firma) {
+                if(((Firma) l.getKlienci().get(i)).getKRS()==KRS){
+                    numer =i;
+                    break;
+                }
+
+            }
+        }
+
+        return numer;
+    }
 }
