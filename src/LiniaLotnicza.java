@@ -103,8 +103,10 @@ public class LiniaLotnicza {
     }
     public void zarezerwujBilet(int ile,Lot lot, Klient klient){
         if(lot.czysawolnebilety(ile)){
-            klient.dodajBilet(lot.getWolnebilety().get(0));
-            lot.zarezerwujBilet(lot.getWolnebilety().get(0));
+            for(int i=0;i<ile;i++) {
+                klient.dodajBilet(lot.getWolnebilety().get(0));
+                lot.zarezerwujBilet(lot.getWolnebilety().get(0));
+            }
         }
         else{
             System.out.println("Brak wolnych miejsc");
