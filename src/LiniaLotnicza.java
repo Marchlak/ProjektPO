@@ -101,10 +101,12 @@ public class LiniaLotnicza {
     {
         loty.remove(l);
     }
-    public void zarezerwujBilet(Lot lot, Klient klient){
-        if(lot.czysawolnebilety()){
-            klient.dodajBilet(lot.getWolnebilety().get(0));
-            lot.zarezerwujBilet(lot.getWolnebilety().get(0));
+    public void zarezerwujBilet(int ile,Lot lot, Klient klient){
+        if(lot.czysawolnebilety(ile)){
+            for(int i=0;i<ile;i++) {
+                klient.dodajBilet(lot.getWolnebilety().get(0));
+                lot.zarezerwujBilet(lot.getWolnebilety().get(0));
+            }
         }
         else{
             System.out.println("Brak wolnych miejsc");
@@ -147,6 +149,11 @@ public class LiniaLotnicza {
     {
         return trasy.size();
     }
+
+    public ArrayList<Klient> getKlienci() {
+        return klienci;
+    }
+
     public ArrayList <Lotnisko>  wczytajLotniska() throws FileNotFoundException {
         Scanner scanner = new Scanner(new File(path));
 
