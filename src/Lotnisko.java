@@ -27,8 +27,6 @@ public class Lotnisko {
 
     @Override
     public String toString() {
-        return "Lotniskow miescie -" + miasto + " o wspolrzednych - " +
-                "X=" + X +
-                ", Y=" + Y ;
+        return  miasto ;
     }
 }

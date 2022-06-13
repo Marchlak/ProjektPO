@@ -66,13 +66,8 @@ public class Lot {
 
     @Override
     public String toString() {
-        return "Lot{" +
-                "poczatek=" + poczatek +
-                ", koniec=" + koniec +
-                ", liczbamiejsc=" + liczbamiejsc +
-                ", nrsamolotu=" + nrsamolotu +
-                ", id='" + id + '\'' +
-                ", trasa=" + trasa +
-                '}';
+        return "Odlot o godzinie - " + poczatek +
+                " przylot o godzinie - " + koniec +
+                ", Z " + trasa;
     }
 }

@@ -21,10 +21,7 @@ private double odleglosc;
     }
 
     public String toString() {
-        return "Trasa z"
-                 + A +
-                "do " + B +
-                " odleglosc =" + odleglosc +
-                "km\n ";
+        return   A +
+                " do " + B ;
     }
 }

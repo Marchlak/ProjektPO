@@ -26,7 +26,6 @@ public class Main {
                     System.out.println("0. Powrot do menu glownego");
                     switch(petla)
                     {
-
                         case 1 ->
                                 {
                                     System.out.println("");
@@ -65,7 +64,8 @@ public class Main {
                     System.out.println("11. Usun Samolot");
                     System.out.println("12.Generuj Loty dla Samolotu");
                     System.out.println("13.Wypisz Loty Samolotu");
-                    System.out.println("13.Usun Loty Samolotu");
+                    System.out.println("14.Usun Lot Samolotu");
+                    System.out.println("15. Wypisz wszystkie loty");
                     System.out.println("0. Wyjdz do menu glownego");
 
 
@@ -81,6 +81,7 @@ public class Main {
                         case 2 ->
                         {
                             System.out.println("\n");
+                            linia.zapisz();
 
                         }
                         case 3 ->
@@ -231,11 +232,25 @@ public class Main {
                             }
 
                         }
+                        case 14 ->
+                                {
+                                    System.out.println("Podaj indeks którego samolotu chcesz wypisać loty");
+
+                                }
+                        case 15 ->
+                                {
+                                    System.out.println("Dostepne Loty\n");
+                                    ArrayList<Lot> loty = linia.getLoty();
+                                    for (Lot L: loty)
+                                    {
+                                        System.out.println(L.toString());
+                                    }
+
+                                }
                     }
 
-
-
                 }while(petla!=0);
+                petla=1;
             }
 
 
