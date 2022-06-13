@@ -24,9 +24,9 @@ public class Lot {
         generujBilety();
     }
 
-    public boolean czysawolnebilety(){
+    public boolean czysawolnebilety(int ile){
         boolean wynik = false;
-        if(wolnebilety.size()>0){
+        if(wolnebilety.size()>=ile){
             wynik = true;
         }
         return wynik;

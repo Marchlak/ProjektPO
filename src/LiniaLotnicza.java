@@ -101,8 +101,8 @@ public class LiniaLotnicza {
     {
         loty.remove(l);
     }
-    public void zarezerwujBilet(Lot lot, Klient klient){
-        if(lot.czysawolnebilety()){
+    public void zarezerwujBilet(int ile,Lot lot, Klient klient){
+        if(lot.czysawolnebilety(ile)){
             klient.dodajBilet(lot.getWolnebilety().get(0));
             lot.zarezerwujBilet(lot.getWolnebilety().get(0));
         }
