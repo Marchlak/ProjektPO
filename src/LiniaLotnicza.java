@@ -187,11 +187,73 @@ public class LiniaLotnicza {
         }
         return samoloty;
     }
+    public ArrayList<Klient> wczytajFirmy() throws FileNotFoundException {
+        Scanner scanner = new Scanner(new File("input.txt"));
+        for (int i = 0; i < 4; i++) {
+            scanner.nextLine();
+        }
+        String[] linia = scanner.nextLine().split(";");
+        for (int i = 0; i < linia.length; i++) {
+            String[] parametry = linia[i].split(" ");
+            String nazwa = parametry[0];
+            String narodowosc = parametry[1];
+            int KRS = Integer.parseInt(parametry[2]);
+            Firma firma = new Firma(nazwa,narodowosc,KRS);
+
+            String[] ids = parametry[3].split("/");
+            for(int j=0;j<ids.length;j++){
+                for(int k=0;k<loty.size();k++){
+                    if(loty.get(k).id.equals(ids[j])){
+                        Bilet bilet = new Bilet(loty.get(k).trasa.getA().getMiasto(),
+                                loty.get(k).trasa.getB().getMiasto(),loty.get(k).poczatek,loty.get(k).id);
+                        firma.dodajBilet(bilet);
+
+                    }
+                }
+            }
+
+            klienci.add(firma);
+        }
+        return klienci;
+    }
+    public void wczytajIndywidualnych() throws FileNotFoundException {
+        Scanner scanner = new Scanner(new File("input.txt"));
+        for (int i = 0; i < 5; i++) {
+            scanner.nextLine();
+        }
+        String[] linia = scanner.nextLine().split(";");
+        for (int i = 0; i < linia.length; i++) {
+            String[] parametry = linia[i].split(" ");
+            String imie = parametry[0];
+            String nazwisko = parametry[1];
+            String narodowosc = parametry[2];
+            int wiek = Integer.parseInt(parametry[3]);
+            Indywidualny indywidualny=new Indywidualny(imie,nazwisko,narodowosc,wiek);
+
+
+            String[] ids = parametry[4].split("/");
+            for(int j=0;j<ids.length;j++) {
+                for (int k = 0; k < loty.size(); k++) {
+                    if (loty.get(k).id.equals(ids[j])) {
+                        Bilet bilet = new Bilet(loty.get(k).trasa.getA().getMiasto(),
+                                loty.get(k).trasa.getB().getMiasto(), loty.get(k).poczatek, loty.get(k).id);
+                        indywidualny.dodajBilet(bilet);
+
+                    }
+                }
+
+
+            }
+            klienci.add(indywidualny);
+        }
+    }
     public void wczytaj() throws FileNotFoundException {
         wczytajLotniska();
         wczytajTrasy();
         wczytajLoty();
         wczytajSamoloty();
         dodajLotyDoSamolotow();
+        wczytajFirmy();
+        wczytajIndywidualnych();
     }
 }
