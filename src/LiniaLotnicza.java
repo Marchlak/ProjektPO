@@ -114,15 +114,16 @@ public class LiniaLotnicza {
 
         String[] linia = scanner.nextLine().split(";");
 
+        if(linia.length>1) {
+            for (int i = 0; i < linia.length; i++) {
+                String[] parametry = linia[i].split(" ");
+                double x = Double.parseDouble(parametry[0]);
+                double y = Double.parseDouble(parametry[1]);
+                String miasto = parametry[2];
+                Lotnisko l = new Lotnisko(x, y, miasto);
+                lotniska.add(l);
 
-        for(int i = 0; i< linia.length;i++) {
-            String[] parametry = linia[i].split(" ");
-            double x = Double.parseDouble(parametry[0]);
-            double y = Double.parseDouble(parametry[1]);
-            String miasto = parametry[2];
-            Lotnisko l = new Lotnisko(x, y, miasto);
-            lotniska.add(l);
-
+            }
         }
         return lotniska;
     }
@@ -132,12 +133,14 @@ public class LiniaLotnicza {
         scanner.nextLine();
 
         String[] linia = scanner.nextLine().split(";");
-        for(int i=0;i< linia.length;i++) {
-            String[] parametry = linia[i].split(" ");
-            int x = Integer.parseInt(parametry[0]);
-            int y = Integer.parseInt(parametry[1]);
-            Trasa trasa = new Trasa(lotniska.get(x), lotniska.get(y));
-            trasy.add(trasa);
+        if(linia.length>1) {
+            for (int i = 0; i < linia.length; i++) {
+                String[] parametry = linia[i].split(" ");
+                int x = Integer.parseInt(parametry[0]);
+                int y = Integer.parseInt(parametry[1]);
+                Trasa trasa = new Trasa(lotniska.get(x), lotniska.get(y));
+                trasy.add(trasa);
+            }
         }
         return trasy;
     }
@@ -149,21 +152,22 @@ public class LiniaLotnicza {
             scanner.nextLine();
         }
         String[] linia = scanner.nextLine().split(";");
+        if(linia.length>1) {
+            for (int i = 0; i < linia.length; i++) {
+                String[] parametry = linia[i].split(" ");
+                int rok = Integer.parseInt(parametry[0]);
+                int miesac = Integer.parseInt(parametry[1]);
+                int dzien = Integer.parseInt(parametry[2]);
+                int godzina = Integer.parseInt(parametry[3]);
+                int minuta = Integer.parseInt(parametry[4]);
+                int wtrasa = Integer.parseInt(parametry[5]);
+                int miejsca = Integer.parseInt(parametry[6]);
+                int nrsamolotu = Integer.parseInt(parametry[7]);
 
-        for(int i=0;i< linia.length;i++) {
-            String[] parametry = linia[i].split(" ");
-            int rok = Integer.parseInt(parametry[0]);
-            int miesac = Integer.parseInt(parametry[1]);
-            int dzien = Integer.parseInt(parametry[2]);
-            int godzina = Integer.parseInt(parametry[3]);
-            int minuta = Integer.parseInt(parametry[4]);
-            int wtrasa = Integer.parseInt(parametry[5]);
-            int miejsca = Integer.parseInt(parametry[6]);
-            int nrsamolotu = Integer.parseInt(parametry[7]);
-
-            LocalDateTime czas = LocalDateTime.of(LocalDate.of(rok,miesac,dzien), LocalTime.of(godzina,minuta));
-            Lot lot = new Lot(czas,trasy.get(wtrasa),miejsca,nrsamolotu);
-            loty.add(lot);
+                LocalDateTime czas = LocalDateTime.of(LocalDate.of(rok, miesac, dzien), LocalTime.of(godzina, minuta));
+                Lot lot = new Lot(czas, trasy.get(wtrasa), miejsca, nrsamolotu);
+                loty.add(lot);
+            }
         }
         return loty;
     }
@@ -175,14 +179,19 @@ public class LiniaLotnicza {
             scanner.nextLine();
         }
         String[] linia = scanner.nextLine().split(";");
-        for (int i = 0; i < linia.length; i++) {
-            String[] parametry = linia[i].split(" ");
-            double zasieg = Double.parseDouble(parametry[0]);
-            int liczbamiejsc = Integer.parseInt(parametry[1]);
-            String model = parametry[2];
-            Samolot samolot = new Samolot(zasieg,liczbamiejsc,model);
-            samoloty.add(samolot);
+        if(linia.length>1) {
+            for (int i = 0; i < linia.length; i++) {
+                String[] parametry = linia[i].split(" ");
+                double zasieg = Double.parseDouble(parametry[0]);
+                int liczbamiejsc = Integer.parseInt(parametry[1]);
+                String model = parametry[2];
+                Samolot samolot = new Samolot(zasieg, liczbamiejsc, model);
+                samoloty.add(samolot);
+            }
+
+
         }
+
 
         return samoloty;
     }
@@ -198,26 +207,33 @@ public class LiniaLotnicza {
             scanner.nextLine();
         }
         String[] linia = scanner.nextLine().split(";");
-        for (int i = 0; i < linia.length; i++) {
-            String[] parametry = linia[i].split(" ");
-            String nazwa = parametry[0];
-            String narodowosc = parametry[1];
-            int KRS = Integer.parseInt(parametry[2]);
-            Firma firma = new Firma(nazwa,narodowosc,KRS);
+        if(linia.length>1) {
+            for (int i = 0; i < linia.length; i++) {
+                String[] parametry = linia[i].split(" ");
+                String nazwa = parametry[0];
+                String narodowosc = parametry[1];
+                int KRS = Integer.parseInt(parametry[2]);
+                Firma firma = new Firma(nazwa, narodowosc, KRS);
+                String tmp="";
+                if(parametry.length>3){
+                    tmp=parametry[3];
+                }
 
-            String[] ids = parametry[3].split("/");
-            for(int j=0;j<ids.length;j++){
-                for(int k=0;k<loty.size();k++){
-                    if(loty.get(k).id.equals(ids[j])){
-                        Bilet bilet = new Bilet(loty.get(k).trasa.getA().getMiasto(),
-                                loty.get(k).trasa.getB().getMiasto(),loty.get(k).poczatek,loty.get(k).id);
-                        firma.dodajBilet(bilet);
+                String[] ids = tmp.split("/");
+                if(ids.length>1) {
+                    for (int j = 0; j < ids.length; j++) {
+                        for (int k = 0; k < loty.size(); k++) {
+                            if (loty.get(k).id.equals(ids[j])) {
+                                Bilet bilet = new Bilet(loty.get(k).trasa.getA().getMiasto(),
+                                        loty.get(k).trasa.getB().getMiasto(), loty.get(k).poczatek, loty.get(k).id);
+                                firma.dodajBilet(bilet);
 
+                            }
+                        }
                     }
                 }
+                klienci.add(firma);
             }
-
-            klienci.add(firma);
         }
         return klienci;
     }
@@ -234,9 +250,14 @@ public class LiniaLotnicza {
             String narodowosc = parametry[2];
             int wiek = Integer.parseInt(parametry[3]);
             Indywidualny indywidualny=new Indywidualny(imie,nazwisko,narodowosc,wiek);
+            String tmp="";
+            if(parametry.length>4){
+                tmp=parametry[4];
+            }
 
 
-            String[] ids = parametry[4].split("/");
+
+            String[] ids = tmp.split("/");
             for(int j=0;j<ids.length;j++) {
                 for (int k = 0; k < loty.size(); k++) {
                     if (loty.get(k).id.equals(ids[j])) {
