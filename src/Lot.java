@@ -39,6 +39,7 @@ public class Lot {
     }
     public void zarezerwujBilet(Bilet bilet){ //dokonczyc
         wolnebilety.remove(bilet);
+        liczbamiejsc--;
     }
     public String generujid(){
       String s =nrsamolotu+poczatek.toString();
