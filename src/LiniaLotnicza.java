@@ -421,4 +421,8 @@ public class LiniaLotnicza {
     public ArrayList<Lot> getLoty() {
         return loty;
     }
+
+    public void setPath(String path) {
+        this.path = path;
+    }
 }

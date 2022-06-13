@@ -21,20 +21,23 @@ public class Main {
             {
                 do {
                     System.out.println("Witaj w panelu użytkownika");
-                    System.out.println("1. Rezerwacja biletu");
-                    System.out.println("2. Usuniecie rezerawcji");
+                    System.out.println("1. Zaloguj sie");
+                    System.out.println("2. Utworz konto");
                     System.out.println("0. Powrot do menu glownego");
                     switch(petla)
                     {
                         case 1 ->
                                 {
-                                    System.out.println("");
-                                    linia.wczytaj();
+                                    System.out.println("Podaj swoje imie i nazwisko");
+                                    String imie = sc2.nextLine();
+                                    String nazwisko = sc2.nextLine();
+
                                 }
                         case 2 ->
                                 {
-                                    System.out.println("");
-                                    linia.zapisz();
+                                    System.out.println("Podaj KRS firmy");
+                                    String KRS = sc2.nextLine();
+
                                 }
 
                     }
@@ -73,15 +76,15 @@ public class Main {
                         case 1 -> {
                             System.out.println("Podaj nazwe pliku z ktorego wczytasz dane");
                             String nazwaPliku=sc2.nextLine();
+                            linia.setPath(nazwaPliku);
                             linia.wczytaj();
-
                         }
                         case 2 ->
                         {
                             System.out.println("Podaj nazwe pliku");
                             String nazwaPliku=sc2.nextLine();
+                            linia.setPath(nazwaPliku);
                             linia.zapisz();
-
                         }
                         case 3 ->
                         {
@@ -205,9 +208,9 @@ public class Main {
                             }
                             System.out.println("Podaj indeks trasy do ktorej ma zostac wygenerowany lot");
                             int itras = sc.nextInt()-1;
-                            if(itras<0 || itras+1>linia.ileSamolotow())
+                            if(itras<0 || itras+1>linia.ileTras())
                             {
-                                System.out.println("Nie ma takiego samolotu");
+                                System.out.println("Nie ma takiej trasy");
                                 break;
                             }
                             System.out.println("Podaj czas w ktorym ma sie odbyc pierwszy lot");
@@ -239,10 +242,6 @@ public class Main {
 
                         }
                         case 14 ->
-                                {
-                                    System.out.println("Podaj indeks którego samolotu chcesz wypisać loty");
-                                }
-                        case 15 ->
                                 {
                                     System.out.println("Dostepne Loty\n");
                                     ArrayList<Lot> loty = linia.getLoty();
