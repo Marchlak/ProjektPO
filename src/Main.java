@@ -34,9 +34,7 @@ public class Main {
                         case 2 ->
                                 {
                                     System.out.println("");
-
                                     linia.zapisz();
-
                                 }
 
                     }
@@ -73,14 +71,15 @@ public class Main {
 
                     switch(petla) {
                         case 1 -> {
-                            System.out.println("Podaj nazwe pliku");
-                            String nazwaPliku;
+                            System.out.println("Podaj nazwe pliku z ktorego wczytasz dane");
+                            String nazwaPliku=sc2.nextLine();
                             linia.wczytaj();
 
                         }
                         case 2 ->
                         {
-                            System.out.println("\n");
+                            System.out.println("Podaj nazwe pliku");
+                            String nazwaPliku=sc2.nextLine();
                             linia.zapisz();
 
                         }
@@ -108,7 +107,6 @@ public class Main {
                             {
                                 System.out.println(L.toString());
                             }
-
                         }
                         case 5 ->
                         {
@@ -147,8 +145,6 @@ public class Main {
                             {
                                 System.out.println(T.toString());
                             }
-
-
                         }
                         case 8 ->
                         {
@@ -202,8 +198,18 @@ public class Main {
                         {
                             System.out.println("Podaj indeks samolotu do ktorego chcesz wygenerowac lot");
                             int isam= sc.nextInt()-1;
+                            if(isam<0 || isam+1>linia.ileSamolotow())
+                            {
+                                System.out.println("Nie ma takiego samolotu");
+                                break;
+                            }
                             System.out.println("Podaj indeks trasy do ktorej ma zostac wygenerowany lot");
                             int itras = sc.nextInt()-1;
+                            if(itras<0 || itras+1>linia.ileSamolotow())
+                            {
+                                System.out.println("Nie ma takiego samolotu");
+                                break;
+                            }
                             System.out.println("Podaj czas w ktorym ma sie odbyc pierwszy lot");
                             int rok = sc.nextInt();
                             int mies = sc.nextInt();
@@ -235,7 +241,6 @@ public class Main {
                         case 14 ->
                                 {
                                     System.out.println("Podaj indeks którego samolotu chcesz wypisać loty");
-
                                 }
                         case 15 ->
                                 {
@@ -256,8 +261,5 @@ public class Main {
 
 
         }while(petla!=0);
-
-
-
     }
 }
