@@ -1,11 +1,11 @@
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.time.LocalDateTime;
 import java.util.Scanner;
 import java.util.ArrayList;
 public class Main {
 
-    public static void main(String[] args) throws FileNotFoundException
-    {
+    public static void main(String[] args) throws IOException {
         Scanner sc = new Scanner(System.in);
         Scanner sc2 = new Scanner(System.in);
         LiniaLotnicza linia =new LiniaLotnicza();
@@ -30,12 +30,13 @@ public class Main {
                         case 1 ->
                                 {
                                     System.out.println("");
+                                    linia.wczytaj();
                                 }
                         case 2 ->
                                 {
                                     System.out.println("");
 
-
+                                    linia.zapisz();
 
                                 }
 
