@@ -262,7 +262,7 @@ public class LiniaLotnicza {
         wczytajIndywidualnych();
     }
     public void zapisz() throws IOException {
-        PrintWriter writer = new PrintWriter(new File("output.txt"));
+        PrintWriter writer = new PrintWriter(new File("input.txt"));
         String llotniska = "";
         String ltrasy="";
         String lloty="";
