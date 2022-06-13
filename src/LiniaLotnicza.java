@@ -50,9 +50,20 @@ public class LiniaLotnicza {
     {
         trasy.add(t);
     }
-    public void usunTrase(int indeks)
-    {
-        trasy.remove(indeks);
+    public void usunTrase(int indeks) {
+        boolean czywystepuje = false;
+        String miastoA = trasy.get(indeks).getA().getMiasto();
+        String miastoB = trasy.get(indeks).getB().getMiasto();
+        for (int i = 0; i < loty.size(); i++) {
+            if (loty.get(i).trasa.getA().getMiasto().equals(miastoA) && loty.get(i).trasa.getB().getMiasto().equals(miastoB)) {
+                czywystepuje = true;
+            }
+        }
+        if (czywystepuje) {
+            System.out.println("Nie mozna usunac trasy");
+        } else {
+            trasy.remove(trasy.get(indeks));
+        }
     }
     public void dodajLotnisko(Lotnisko l)
     {
