@@ -7,7 +7,8 @@ public class Samolot {
     private String model;
     private ArrayList<Lot> Loty;
 
-    public Samolot(double zasieg, int liczbamiejsc, String model) {
+    public Samolot(double zasieg, int liczbamiejsc, String model)
+    {
         this.zasieg = zasieg;
         this.liczbamiejsc = liczbamiejsc;
         this.model = model;
@@ -133,6 +134,10 @@ public class Samolot {
 
     public ArrayList<Lot> getLoty() {
         return Loty;
+    }
+    public Lot getLot(int indeks)
+    {
+        return Loty.get(indeks);
     }
 
 

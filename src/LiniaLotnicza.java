@@ -113,7 +113,7 @@ public class LiniaLotnicza {
             System.out.println("Brak wolnych miejsc");
         }
     }
-
+///getttery
     public ArrayList<Lotnisko> getLotniska() {
         return lotniska;
     }
@@ -464,5 +464,15 @@ public class LiniaLotnicza {
     public Lot getLot(int indeks)
     {
         return loty.get(indeks);
+    }
+    public int ilelotow(int indeks)
+    {
+       return samoloty.get(indeks).getLoty().size();
+    }
+    public void usunLotsamolotu(int indekssam,int indekslot)
+    {
+        Lot lot = samoloty.get(indekssam).getLot(indekslot);
+        samoloty.get(indekssam).usunLot(indekslot);
+        loty.remove(lot);
     }
 }
