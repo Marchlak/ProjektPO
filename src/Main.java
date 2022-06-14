@@ -107,6 +107,7 @@ public class Main {
                     System.out.println("13.Wypisz Loty Samolotu");
                     System.out.println("14 Wypisz wszystkie loty");
                     System.out.println("15 Usun lot konkretnego samolotu");
+                    System.out.println("16 Wypisz klientow");
                     System.out.println("0. Wyjdz do menu glownego");
 
 
@@ -315,6 +316,36 @@ public class Main {
                                     linia.usunLotsamolotu(isam,ilot);
 
                                 }
+                        case 16 -> {
+                            System.out.println("Klienci indywidualni:");
+                            for (int i = 0; i < linia.getKlienci().size(); i++) {
+                                if (linia.getKlienci().get(i) instanceof Indywidualny) {
+                                    System.out.println(((Indywidualny) linia.getKlienci().get(i)).getImie() +
+                                            " " + ((Indywidualny) linia.getKlienci().get(i)).getNazwisko() +
+                                            " " + ((Indywidualny) linia.getKlienci().get(i)).getNarodowosc());
+                                    for (int j = 0; j < ((Indywidualny) linia.getKlienci().get(i)).getBilety().size(); j++) {
+                                        System.out.println(((Indywidualny) linia.getKlienci().get(i)).getBilety().get(j).getSkad()+"-"+
+                                                ((Indywidualny) linia.getKlienci().get(i)).getBilety().get(j).getDokad()+" "+
+                                                ((Indywidualny) linia.getKlienci().get(i)).getBilety().get(j).getData());
+                                    }
+                                }
+                            }
+
+                            System.out.println("Firmy:");
+                            for (int i = 0; i < linia.getKlienci().size(); i++) {
+                                if (linia.getKlienci().get(i) instanceof Firma) {
+                                    System.out.println(((Firma) linia.getKlienci().get(i)).getNazwa() +
+                                            " " + ((Firma) linia.getKlienci().get(i)).getNarodowosc());
+
+                                    for (int j = 0; j < ((Firma) linia.getKlienci().get(i)).getBilety().size(); j++) {
+                                        System.out.println(((Firma) linia.getKlienci().get(i)).getBilety().get(j).getSkad()+"-"+
+                                                ((Firma) linia.getKlienci().get(i)).getBilety().get(j).getDokad()+" "+
+                                                ((Firma) linia.getKlienci().get(i)).getBilety().get(j).getData());
+                                    }
+                                }
+                            }
+                            System.out.println("\n");
+                        }
                     }
 
                 }while(petla!=0);
