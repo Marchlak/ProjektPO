@@ -48,6 +48,8 @@ public class Main {
                         {
                             System.out.println(linia.getLot(linia.czyjesttakatrasa(miasto1,miasto2)).toString());
                         }
+                        System.out.println("Wybierz indekslotu");
+                        int indekslotu= sc.nextInt();
 
 
                     }
