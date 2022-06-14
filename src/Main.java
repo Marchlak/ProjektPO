@@ -12,7 +12,7 @@ public class Main {
         int petla;
         do {
             System.out.println("Witaj w Systemie kontroli lotów");
-            System.out.println("1. Zarezeruwj Bilet");
+            System.out.println("1. Zarezerwuj Bilet");
             System.out.println("2. Interfejs Admina");
             System.out.println("0. Wyjdz");
             System.out.println("");
@@ -52,13 +52,13 @@ public class Main {
                         System.out.println("Wybierz indeks lotu");
                         int indekslotu= sc.nextInt();
                         System.out.println("1. Klient indywidualny");
-                        System.out.println("2.Firma");
+                        System.out.println("2. Firma");
                         int decyzja=sc2.nextInt();
                         if(decyzja==1) {
                             System.out.println("Podaj imie:");
-                            String imie = sc2.nextLine();
+                            String imie = sc2.next();
                             System.out.println("Podaj nazwisko:");
-                            String nazwisko = sc2.nextLine();
+                            String nazwisko = sc.next();
                             int nrklienta = czyjesttakiklient(linia, nazwisko, imie);
                             if (nrklienta == -1) {
                                 System.out.println("Nie ma takiego klienta");
@@ -66,6 +66,11 @@ public class Main {
                                 System.out.println("Ile biletow:");
                                 int ile = sc.nextInt();
                                 linia.zarezerwujBilet(ile, linia.getLot(indekslotu), linia.getKlienci().get(nrklienta));
+                                linia.zapisz();
+                                System.out.println("Zarezerwowano lot z "+linia.getLot(indekslotu).getTrasa().getA().getMiasto()+
+                                        " do "+linia.getLot(indekslotu).getTrasa().getB().getMiasto()+" "+
+                                        linia.getLot(indekslotu).getPoczatek());
+                                break;
                             }
                         }
                         else if(decyzja==2) {
@@ -80,6 +85,11 @@ public class Main {
                             System.out.println("Ile biletow:");
                             int ile =sc.nextInt();
                             linia.zarezerwujBilet(ile,linia.getLot(indekslotu),linia.getKlienci().get(nrfirmy));
+                            System.out.println("Zarezerwowano lot z "+linia.getLot(indekslotu).getTrasa().getA().getMiasto()+
+                                    " do "+linia.getLot(indekslotu).getTrasa().getB().getMiasto()+" "+
+                                    linia.getLot(indekslotu).getPoczatek());
+                            linia.zapisz();
+                            break;
                         }
 
                         }
