@@ -23,6 +23,7 @@ public class LiniaLotnicza {
         trasy = new ArrayList<>();
         samoloty = new ArrayList<>();
     }
+
     public void dodajSamolot(Samolot samolot)
     {
         samoloty.add(samolot);
@@ -431,5 +432,37 @@ public class LiniaLotnicza {
 
     public void setPath(String path) {
         this.path = path;
+    }
+    public ArrayList<Integer> WyswietlLoty(LocalDateTime Od,LocalDateTime Do,int indekstrasy)
+    {
+        ArrayList<Integer> indeksylotow= new ArrayList<Integer>();
+        int i=0;
+        for (Lot L: loty)
+        {
+            if(L.getPoczatek().isAfter(Od) && L.getPoczatek().isBefore(Do) && L.getTrasa().equals(trasy.get(indekstrasy)))
+            {
+             indeksylotow.add(i);
+            }
+            i++;
+        }
+        return indeksylotow;
+    }
+    public int czyjesttakatrasa(String miasto1,String miasto2)
+    {
+        int wynik=-1;
+        int i=0;
+        for (Trasa T: trasy)
+        {
+            if(T.getA().getMiasto().equals(miasto1) && T.getB().getMiasto().equals(miasto2))
+            {
+                wynik=i;
+            }
+            i++;
+        }
+        return wynik;
+    }
+    public Lot getLot(int indeks)
+    {
+        return loty.get(indeks);
     }
 }

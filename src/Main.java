@@ -12,7 +12,7 @@ public class Main {
         int petla;
         do {
             System.out.println("Witaj w Systemie kontroli lotów");
-            System.out.println("1. Interefejs Uzytownika");
+            System.out.println("1. Zarezeruwj Bilet");
             System.out.println("2. Interfejs Admina");
             System.out.println("0. Wyjdz");
             System.out.println("");
@@ -21,25 +21,38 @@ public class Main {
             {
                 do {
                     System.out.println("Witaj w panelu użytkownika");
-                    System.out.println("1. Zaloguj sie");
-                    System.out.println("2. Utworz konto");
-                    System.out.println("0. Powrot do menu glownego");
-                    switch(petla)
+                    System.out.println("1. Podaj skad dokad chcesz leciec");
+                    String miasto1=sc2.nextLine();
+                    String miasto2=sc2.nextLine();
+                    if(-1==linia.czyjesttakatrasa(miasto1,miasto2))
                     {
-                        case 1 ->
-                                {
-                                    System.out.println("Podaj swoje imie i nazwisko");
-                                    String imie = sc2.nextLine();
-                                    String nazwisko = sc2.nextLine();
+                        System.out.println("Nie ma takiej trasy");
+                        break;
+                    }
+                    else
+                    {
+                        System.out.println(" Podaj kiedy szukasz lotu");
+                        int rok = sc.nextInt();
+                        int mies = sc.nextInt();
+                        int dzien = sc.nextInt();
+                        int godzina = sc.nextInt();
+                        int minuta = sc.nextInt();
+                        LocalDateTime poczateklotu = LocalDateTime.of(rok,mies,dzien,godzina,minuta);
+                        ArrayList<Integer> dostepneloty=linia.WyswietlLoty(poczateklotu,poczateklotu.plusWeeks(1),linia.czyjesttakatrasa(miasto1,miasto2));
+                        if(dostepneloty.isEmpty())
+                        {
+                            System.out.println("Przepraszamy w tym czasie nie ma zadnych lotow");
+                            break;
+                        }
+                        for (int i: dostepneloty)
+                        {
+                            System.out.println(linia.getLot(linia.czyjesttakatrasa(miasto1,miasto2)).toString());
+                        }
 
-                                }
-                        case 2 ->
-                                {
-                                    System.out.println("Podaj KRS firmy");
-                                    String KRS = sc2.nextLine();
-                                }
 
                     }
+
+
                 }while(petla!=0);
 
 
@@ -128,7 +141,7 @@ public class Main {
                             System.out.println("Podaj indeksy lotnisk ktore z ktorych chcesz zrobic trase\n");
                             int indeksA=sc.nextInt()-1;
                             int indeksB=sc.nextInt()-1;
-                            if(indeksA<0 || indeksA+1>linia.ileTras() || indeksB<0 || indeksB+1>linia.ileTras())
+                            if(indeksA<0 || indeksA+1>linia.ileLotnisk() || indeksB<0 || indeksB+1>linia.ileLotnisk())
                             {
                                 System.out.println("Błędne indeksy");
                             }
@@ -231,8 +244,6 @@ public class Main {
                             System.out.println("Podaj ile razy chcesz powtórzyc lot");
                             int ilerazypowtorzyc=sc.nextInt();
                             linia.GenerowanieLotow(ilerazypowtorzyc,coiledni,odlot,linia.getTrasa(itras),isam);
-
-
                         }
                         case 13 ->
                         {
@@ -249,7 +260,6 @@ public class Main {
                             {
                                 System.out.println(L.toString());
                             }
-
                         }
                         case 14 ->
                                 {
