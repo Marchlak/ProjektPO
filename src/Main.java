@@ -48,8 +48,34 @@ public class Main {
                         {
                             System.out.println(linia.getLot(linia.czyjesttakatrasa(miasto1,miasto2)).toString());
                         }
-                        System.out.println("Wybierz indekslotu");
+                        System.out.println("Wybierz indeks lotu");
                         int indekslotu= sc.nextInt();
+                        System.out.println("Podaj imie:");
+                        String imie=sc2.nextLine();
+                        System.out.println("Podaj nazwisko:");
+                        String nazwisko=sc2.nextLine();
+                        int nrklienta= czyjesttakiklient(linia,nazwisko,imie);
+                        if(nrklienta==-1){
+                            System.out.println("Nie ma takiego klienta");
+                        }
+                        else{
+                            System.out.println("Ile biletow:");
+                            int ile =sc.nextInt();
+                            linia.zarezerwujBilet(ile,linia.getLot(indekslotu),linia.getKlienci().get(nrklienta));
+                        }
+
+                     /*   System.out.println("Podaj KRS:");
+                        int KRS=sc2.nextInt();
+                        int nrfirmy= czyjesttakafirma(linia,KRS);
+                        if(nrfirmy==-1){
+                            System.out.println("Nie ma takiego klienta");
+                        }
+                        else{
+                            System.out.println("Ile biletow:");
+                            int ile =sc.nextInt();
+                            linia.zarezerwujBilet(ile,linia.getLot(indekslotu),linia.getKlienci().get(nrfirmy));
+                        }*/
+
 
 
                     }
