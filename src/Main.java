@@ -20,6 +20,7 @@ public class Main {
             if (petla == 1)
             {
                 do {
+                    linia.wczytaj();
                     System.out.println("Witaj w panelu użytkownika");
                     System.out.println("1. Podaj skad dokad chcesz leciec");
                     String miasto1=sc2.nextLine();
@@ -50,21 +51,26 @@ public class Main {
                         }
                         System.out.println("Wybierz indeks lotu");
                         int indekslotu= sc.nextInt();
-                        System.out.println("Podaj imie:");
-                        String imie=sc2.nextLine();
-                        System.out.println("Podaj nazwisko:");
-                        String nazwisko=sc2.nextLine();
-                        int nrklienta= czyjesttakiklient(linia,nazwisko,imie);
-                        if(nrklienta==-1){
-                            System.out.println("Nie ma takiego klienta");
+                        System.out.println("1. Klient indywidualny");
+                        System.out.println("2.Firma");
+                        int decyzja=sc2.nextInt();
+                        if(decyzja==1) {
+                            System.out.println("Podaj imie:");
+                            String imie = sc2.nextLine();
+                            System.out.println("Podaj nazwisko:");
+                            String nazwisko = sc2.nextLine();
+                            int nrklienta = czyjesttakiklient(linia, nazwisko, imie);
+                            if (nrklienta == -1) {
+                                System.out.println("Nie ma takiego klienta");
+                            } else {
+                                System.out.println("Ile biletow:");
+                                int ile = sc.nextInt();
+                                linia.zarezerwujBilet(ile, linia.getLot(indekslotu), linia.getKlienci().get(nrklienta));
+                            }
                         }
-                        else{
-                            System.out.println("Ile biletow:");
-                            int ile =sc.nextInt();
-                            linia.zarezerwujBilet(ile,linia.getLot(indekslotu),linia.getKlienci().get(nrklienta));
-                        }
+                        else if(decyzja==2) {
 
-                     /*   System.out.println("Podaj KRS:");
+                       System.out.println("Podaj KRS:");
                         int KRS=sc2.nextInt();
                         int nrfirmy= czyjesttakafirma(linia,KRS);
                         if(nrfirmy==-1){
@@ -74,9 +80,9 @@ public class Main {
                             System.out.println("Ile biletow:");
                             int ile =sc.nextInt();
                             linia.zarezerwujBilet(ile,linia.getLot(indekslotu),linia.getKlienci().get(nrfirmy));
-                        }*/
+                        }
 
-
+                        }
 
                     }
 
@@ -114,16 +120,12 @@ public class Main {
 
                     switch(petla) {
                         case 1 -> {
-                            System.out.println("Podaj nazwe pliku z ktorego wczytasz dane");
-                            String nazwaPliku=sc2.nextLine();
-                            linia.setPath(nazwaPliku);
+
                             linia.wczytaj();
                         }
                         case 2 ->
                         {
-                            System.out.println("Podaj nazwe pliku");
-                            String nazwaPliku=sc2.nextLine();
-                            linia.setPath(nazwaPliku);
+
                             linia.zapisz();
                         }
                         case 3 ->

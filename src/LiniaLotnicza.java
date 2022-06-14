@@ -15,7 +15,7 @@ public class LiniaLotnicza {
     private ArrayList<Klient> klienci;
     private ArrayList<Trasa> trasy;
      ArrayList<Samolot> samoloty;
-     String path;
+     String path="input.txt";
     public LiniaLotnicza(){
         loty = new ArrayList<>();
         lotniska = new ArrayList<>();
